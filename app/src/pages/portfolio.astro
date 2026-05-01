@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import FlipbookGallery from '../components/FlipbookGallery.astro';
+import rawProjects from '../data/portfolio-projects.json';
+
+type PortfolioProject = {
+  slug: string;
+  title: string;
+  location: string;
+  type: string;
+  description: string;
+  thumbnail: string;
+};
+
+const projects = (rawProjects as PortfolioProject[]).map((project) => ({
+  title: project.title,
+  location: project.location,
+  type: project.type,
+  description: project.description || 'Context-driven design with long-term performance in focus.',
+  imageSrc: project.thumbnail,
+  link: `/portfolio/${project.slug}`
+}));
+
+const featuredFlipbookImages = (rawProjects as PortfolioProject[])
+  .slice(0, 6)
+  .map((project) => ({
+    src: project.thumbnail,
+    alt: `${project.title} - ${project.location}`
+  }));
+---
+
+<Layout title="Portfolio">
+  <Header />
+
+  <section class="page-hero text-center">
+    <div class="container">
+      <span class="eyebrow">Projects Portfolio</span>
+      <h1>Selected Work Across the North East</h1>
+      <p class="subtitle">A portfolio of residential, commercial, interior, and planning projects crafted for real context, long-term durability, and spatial clarity.</p>
+    </div>
+  </section>
+
+  <section class="section bg-alt">
+    <div class="container">
+      <div class="portfolio-flipbook-intro text-center">
+        <span class="eyebrow">Portfolio Preview</span>
+        <h2 class="section-title">Flip Through Featured Projects</h2>
+        <p class="subtitle">A quick visual pass through selected work before you explore the full project grid.</p>
+      </div>
+    </div>
+    <FlipbookGallery images={featuredFlipbookImages} />
+  </section>
+
+  <section class="section bg-alt portfolio-list-section">
+    <div class="container">
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="residential">Residential</button>
+        <button class="filter-btn" data-filter="commercial">Commercial</button>
+        <button class="filter-btn" data-filter="interiors">Interiors</button>
+        <button class="filter-btn" data-filter="planning">Planning</button>
+      </div>
+
+      <div class="portfolio-grid">
+        {projects.map((p) => (
+          <div class="portfolio-item" data-category={p.type.toLowerCase()}>
+            <ProjectCard {...p} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 190px 0 110px;
+    background: linear-gradient(180deg, #f4eee2 0%, #f5f1e8 100%);
+  }
+
+  .page-hero h1 {
+    margin-bottom: 20px;
+    color: var(--color-heading);
+    text-wrap: balance;
+  }
+
+  .page-hero .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.85;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--color-text);
+  }
+
+  .bg-alt {
+    background-color: var(--color-bg-soft);
+  }
+
+  .portfolio-flipbook-intro {
+    max-width: 780px;
+    margin: 0 auto 14px;
+  }
+
+  .portfolio-flipbook-intro .subtitle {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .portfolio-list-section {
+    padding-top: 68px;
+  }
+
+  .filter-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 56px;
+  }
+
+  .filter-btn {
+    padding: 10px 22px;
+    background: transparent;
+    border: 1px solid var(--color-border-strong);
+    color: var(--color-heading);
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--color-heading);
+    color: var(--color-bg);
+    border-color: var(--color-heading);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 34px;
+  }
+
+  .portfolio-item {
+    transition: opacity 0.35s ease;
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 2.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.portfolio-item');
+  const shouldReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = (btn as HTMLElement).dataset.filter;
+      const visibleItems: HTMLElement[] = [];
+      const hiddenItems: HTMLElement[] = [];
+
+      items.forEach(item => {
+        const el = item as HTMLElement;
+        if (filter === 'all' || el.dataset.category === filter) {
+          visibleItems.push(el);
+        } else {
+          hiddenItems.push(el);
+        }
+      });
+
+      if (shouldReduceMotion) {
+        hiddenItems.forEach((item) => {
+          item.style.display = 'none';
+          item.style.opacity = '0';
+        });
+        visibleItems.forEach((item) => {
+          item.style.display = 'block';
+          item.style.opacity = '1';
+          item.style.transform = 'none';
+        });
+        return;
+      }
+
+      gsap.to(hiddenItems, {
+        opacity: 0,
+        y: 16,
+        duration: 0.22,
+        stagger: 0.02,
+        onComplete: () => {
+          hiddenItems.forEach((item) => {
+            item.style.display = 'none';
+          });
+          visibleItems.forEach((item) => {
+            item.style.display = 'block';
+          });
+          gsap.fromTo(
+            visibleItems,
+            { opacity: 0, y: 18 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.45,
+              ease: 'power2.out',
+              stagger: 0.05
+            }
+          );
+        }
+      });
+    });
+  });
+</script>

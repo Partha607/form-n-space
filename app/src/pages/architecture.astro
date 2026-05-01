@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroCarousel from '../components/HeroCarousel.astro';
+
+import hero1 from '../assets/hero/IMG-0148.jpg';
+import hero2 from '../assets/hero/hvs-patsoi-1.jpg';
+import hero3 from '../assets/hero/1c.jpg';
+import hero4 from '../assets/hero/3-1.jpg';
+import hero5 from '../assets/hero/1-2.jpg';
+import hero6 from '../assets/hero/haridas-mantripukhri-right.jpg';
+
+const heroSlides = [
+  { src: hero1.src, alt: 'Form & Space Architecture' },
+  { src: hero2.src, alt: 'HVS Mansion, Patsoi' },
+  { src: hero3.src, alt: 'Residential Project' },
+  { src: hero4.src, alt: 'Contemporary Design' },
+  { src: hero5.src, alt: 'Architectural Work' },
+  { src: hero6.src, alt: 'Haridas Residence, Mantripukhri' },
+];
+---
+
+<Layout title="Architecture">
+  <Header revealOnScroll={true} />
+
+  <!-- 1. HERO SECTION -->
+  <HeroCarousel
+    slides={heroSlides}
+    title="Designing Spaces That Belong to the North East"
+    subtitle="Architecture, Interiors, and Engineering Consultancy crafted for the climate, terrain, and evolving urban landscape of North East India."
+    primaryAction="Start Your Project"
+    primaryLink="/contact"
+    secondaryAction="View Our Work"
+    secondaryLink="/portfolio"
+  />
+
+  <!-- 2. INTRO SECTION -->
+  <section class="section intro-section">
+    <div class="container text-center">
+      <div class="content-block">
+        <span class="eyebrow">Design Studio</span>
+        <h2 class="text-accent">Form & Space Architects</h2>
+        <p class="section-lead intro-text">
+          Form & Space Architects is a design-led practice based in Imphal, now expanding into Guwahati and across North East India.
+          We specialise in creating spaces that respond to real conditions: high rainfall, seismic sensitivity, diverse terrain, and evolving urban needs.
+          Our work is not just about how a space looks, but how it performs over time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CORE SERVICES -->
+  <section class="section services-section section-muted">
+    <div class="container">
+      <div class="services-grid">
+        <div class="service-card premium-card">
+          <h3>Architectural Design</h3>
+          <p>Thoughtful building design tailored to climate, structure, and long-term usability.</p>
+        </div>
+        <div class="service-card premium-card">
+          <h3>Interior Design</h3>
+          <p>Functional and refined interiors designed for everyday comfort and durability.</p>
+        </div>
+        <div class="service-card premium-card">
+          <h3>Urban Design</h3>
+          <p>Planning layouts and developments that improve connectivity and land efficiency.</p>
+        </div>
+        <div class="service-card premium-card">
+          <h3>MEP Consultancy</h3>
+          <p>Integrated mechanical, electrical, and plumbing systems for reliable building performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. VALUE PROPOSITION -->
+  <section class="section value-section">
+    <div class="container">
+      <h2 class="section-title">Why Us</h2>
+      <div class="value-grid content-block">
+        <div class="value-item">
+          <h4 class="text-accent">Designed for the North East</h4>
+          <p>We understand the realities of building in this region: heavy rainfall, humidity, terrain challenges, and seismic zones.</p>
+        </div>
+        <div class="value-item">
+          <h4 class="text-accent">Balanced Design Approach</h4>
+          <p>Every project is a balance between aesthetics, cost, and performance.</p>
+        </div>
+        <div class="value-item">
+          <h4 class="text-accent">End-to-End Expertise</h4>
+          <p>From concept design to technical consultancy, we ensure every aspect of your project works together seamlessly.</p>
+        </div>
+        <div class="value-item">
+          <h4 class="text-accent">Practical, Not Theoretical</h4>
+          <p>We design what can actually be built efficiently in the North East market.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 & 6. EXPANSION & TRUST -->
+  <section class="section editorial-section statement-section text-center section-muted">
+    <div class="container">
+      <h2 class="statement-title">From Imphal to Guwahati expanding across North East India.</h2>
+      <p class="statement-subtitle">We are actively working with clients in Assam, Meghalaya, Nagaland, and surrounding regions, bringing region-specific design expertise to every project.</p>
+      
+      <div class="trust-lines centered-followup">
+        <p>Built on understanding the region.</p>
+        <p>Focused on delivering spaces that work.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FINAL CTA SECTION -->
+  <section class="section editorial-section cta-section text-center">
+    <div class="container">
+      <h2>Have a project in mind?</h2>
+      <p>Let’s design something that works for your land, your needs, and your environment.</p>
+      <a href="/contact" class="btn btn-primary cta-link">Get in Touch</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .text-center {
+    text-align: center;
+  }
+
+  .intro-text {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-top: 30px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .service-card {
+    min-height: 100%;
+  }
+
+  .service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--color-heading);
+  }
+
+  .section-title {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    text-align: left;
+  }
+
+  .value-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--font-body);
+  }
+
+  .statement-title {
+    font-size: 3rem;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    color: var(--color-heading);
+  }
+
+  .statement-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    color: var(--color-text);
+    text-align: center;
+  }
+
+  .trust-lines p {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin: 0 auto 10px;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(2rem, 3.4vw, 3.1rem);
+    margin-bottom: 20px;
+  }
+
+  .cta-section p {
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .cta-link {
+    margin-top: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid, .value-grid {
+      grid-template-columns: 1fr;
+    }
+    .intro-text, .statement-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>

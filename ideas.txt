@@ -1,0 +1,964 @@
+Form & Space Architects: https://formnspaceimphal.com
+
+---
+
+Use this exact mix:Background: #F5F1E8
+Headings: #1F3A2E
+Text: #2B2B2B
+Accent: #C2A878
+Optional highlight: #A65A3A
+
+Old Money Style
+Use thin lines (gold or grey)
+Keep fonts serif + clean sans-serif combo
+Keep buttons simple (no gradients)
+
+---
+
+Final Tech Stack Architecture:
+
+1. Framework: Astro (for the speed and "Islands" architecture).
+2. Animation: GSAP (for the high-end architectural transitions).
+3. Images: Astro Assets AND Cloudinary (later, if the firm has thousands of images).
+4. Deployment: Local server.
+5. GitHub: https://github.com/Partha607/form-n-space.git
+---
+Structure and Content:
+
+When the user goes to https://formnspaceimphal.com they must get 2 clickable vertical rectangle cards - Architecture and Infrastructure
+
+Create a splash page (index.astro) featuring two full-height vertical cards.
+
+1. **Left Card (Architecture):** Clickable, leads to /architecture.  
+2. **Right Card (Infrastructure):** Clickable, triggers a 'Site Under Construction' modal using GSAP.  
+3. **Design:** Use the 'Old Money' style—thin gold borders (\#C2A878), sharp 90-degree corners, and elegant typography.  
+4. **Animation:** On hover, the active card should slightly expand while the other dims. Use GSAP for the transition."
+
+---
+
+Architecture Site:
+
+Pages that needs to be created:
+
+A - LANDING PAGE
+B - ABOUT PAGE – FORM & SPACE ARCHITECTS
+C - ARCHITECTURAL DESIGN & CONSULTANCY PAGE 
+D - INTERIOR DESIGN PAGE 
+E - URBAN DESIGN PAGE 
+F - MEP CONSULTANCY PAGE 
+G - PROJECTS / PORTFOLIO PAGE 
+H - CONTACT PAGE 
+
+Logo and other images are already present in the directory
+
+---
+Architecture Site in details:
+---
+
+Build the individual pages with high-end parallax effects.
+Implement a Hero section with a **Parallax Image Effect** where the background image moves at a slower rate than the text scroll.
+Implement a 'Flipbook Style' gallery using GSAP Flip or a horizontal scroll section that feels like turning pages.
+For all large project images, apply a subtle GSAP ScrollTrigger parallax effect (y-axis movement) to give depth."
+
+---
+A - LANDING PAGE
+
+1. HERO SECTION (Above the Fold)
+
+Use "E:\_WORK_\form-n-space\website\formnspaceimphal.com\formnspaceimphal_default.html" as the hero section
+
+Headline:
+Designing Spaces That Belong to the North East
+Subheading:
+Architecture, Interiors, and Engineering Consultancy crafted for the climate, terrain, and evolving urban landscape of North East India.
+Primary CTA:
+Start Your Project
+Secondary CTA:
+View Our Work
+
+2. INTRO SECTION
+
+Form & Space Architects is a design-led practice based in Imphal, now expanding into Guwahati and across North East India.
+We specialise in creating spaces that respond to real conditions—high rainfall, seismic sensitivity, diverse terrain, and evolving urban needs.
+Our work is not just about how a space looks, but how it performs over time.
+
+3. CORE SERVICES (SECTION WITH SHORT COPY)
+
+Architectural Design & Consultancy
+Thoughtful building design tailored to climate, structure, and long-term usability.
+
+Interior Design
+Functional and refined interiors designed for everyday comfort and durability.
+
+Urban Design
+Planning layouts and developments that improve connectivity and land efficiency.
+
+MEP Consultancy
+Integrated mechanical, electrical, and plumbing systems for reliable building performance.
+
+4. VALUE PROPOSITION (WHY US)
+
+Designed for the North East
+We understand the realities of building in this region—heavy rainfall, humidity, terrain challenges, and seismic zones.
+
+Balanced Design Approach
+Every project is a balance between aesthetics, cost, and performance.
+
+End-to-End Expertise
+From concept design to technical consultancy, we ensure every aspect of your project works together seamlessly.
+
+Practical, Not Theoretical
+We design what can actually be built efficiently in the North East market.
+
+5. FEATURED PROJECTS (INTRO TEXT)
+
+A selection of our residential, commercial, and planning projects across Imphal and expanding regions.
+Each project reflects our approach context-driven, functional, and built to last.
+
+
+6. EXPANSION STATEMENT
+
+From Imphal to Guwahati expanding across North East India.
+We are actively working with clients in Assam, Meghalaya, Nagaland, and surrounding regions, bringing region-specific design expertise to every project.
+
+
+7. TRUST / POSITIONING LINE
+
+Built on understanding the region.
+Focused on delivering spaces that work.
+
+8. FINAL CTA SECTION
+
+Have a project in mind?
+Let’s design something that works for your land, your needs, and your environment.
+Button:
+Get in Touch
+
+---
+
+B - ABOUT PAGE – FORM & SPACE ARCHITECTS 
+
+
+1. HERO SECTION
+Headline:
+Rooted in Imphal. Expanding Across the North East.
+Subheading:
+A design practice focused on creating architecture that responds to environment, culture, and long-term performance.
+
+
+2. WHO WE ARE
+Form & Space Architects is an Imphal-based architecture and consultancy studio, now expanding into Guwahati and across North East India.
+We work across residential, commercial, and planning projects, delivering solutions that are both functional and context-driven.
+Our approach is grounded in understanding how spaces are actually used—day to day, across seasons, and over time.
+
+Our firm is led by Mr. Krishna Kumar Sharma (retd. Senior Architect PWD, Manipur), with over 25 years of experience.
+
+Krishna has worked on various levels of prestigious projects and has hands on experience, which has made him aware of various issues faced on each project and provide positive moves to encounter with the issues. We provide, study and design sensibly accordingly to the site context.
+
+Our Team - 
+
+Note to Antigravity: Make in card format
+
+B Krishna Kumar Sharma
+Chief Architect
+Retired Senior Architect, PWD
+
+B Sandeep Sharma
+Architect
+Urban Designer
+
+Aribam Chusmita Sharma
+Architect
+Landscape Architect
+
+Thoithoi Thoudam
+Architect
+
+Irom Sweta
+Junior Architect
+
+
+
+3. OUR APPROACH
+
+We do not believe in one-size-fits-all design.
+Every project begins with a clear understanding of:
+The site and its terrain 
+Climate conditions such as rainfall and humidity 
+Structural and regulatory requirements 
+Client needs and long-term usage 
+This allows us to create designs that are not only visually refined but also practical and efficient.
+
+
+4. DESIGN PHILOSOPHY
+
+Context First
+Good design in the North East must respond to its surroundings—topography, weather, and local lifestyle.
+
+Clarity Over Complexity
+We focus on simple, effective solutions instead of unnecessary design complications.
+
+Performance Matters
+A building must perform well—structurally, functionally, and environmentally.
+
+Longevity Over Trends
+We design spaces that remain relevant and durable over time.
+
+
+5. OUR JOURNEY
+
+Starting from Imphal, we have built our foundation working on diverse projects that reflect the realities of this region.
+With our expansion into Guwahati, we are now extending our services to a wider network of clients across Assam and the North East.
+
+
+6. WHAT MAKES US DIFFERENT
+
+Regional Understanding
+We are not applying generic designs—we build specifically for North East India.
+
+Integrated Services
+Architecture, interiors, urban planning, and MEP consultancy—handled in a coordinated manner.
+
+Execution-Oriented Thinking
+We design with real-world construction, cost, and material availability in mind.
+
+Client-Centric Process
+Clear communication, structured workflow, and practical timelines.
+
+
+7. VISION
+
+To become a trusted design and consultancy firm across North East India, known for delivering spaces that are functional, efficient, and aligned with regional needs.
+
+8. MISSION
+
+To provide architecture and consultancy services that combine thoughtful design with technical reliability, ensuring every project performs well in its environment.
+
+
+9. SERVICE REGIONS
+
+Currently operating from:
+Imphal (Head Office) 
+Guwahati (Expansion) 
+
+Serving projects across:
+Assam 
+Meghalaya 
+Nagaland 
+Manipur 
+Other North East regions 
+
+
+10. CLOSING SECTION
+
+We believe that good design is not just about creating structures—it is about building spaces that work for people, for the environment, and for the future.
+
+
+CTA
+Start your project with a team that understands the region.
+Button: Get in Touch
+
+
+---
+
+C - ARCHITECTURAL DESIGN & CONSULTANCY PAGE 
+
+
+1. HERO SECTION
+Headline:
+Architecture That Responds to Its Environment
+Subheading:
+Designing buildings that are functional, climate-responsive, and built for long-term performance in North East India.
+CTA:
+Discuss Your Project
+
+
+2. OVERVIEW
+At Form & Space Architects, architectural design is approached as a balance between aesthetics, structure, and real-world conditions.
+We create buildings that are not only visually refined but also practical to build, maintain, and use over time.
+Every project is tailored to its location—considering rainfall, terrain, seismic conditions, and material availability across the North East.
+
+Include these images and Implement a 'Flipbook Style' gallery using GSAP Flip or a horizontal scroll section that feels like turning pages: Consultancy-services-01.png, Consultancy-services-02.png, Consultancy-services-03.png
+
+3. WHAT WE DO
+Concept Design & Planning
+We translate your requirements into clear design concepts that define layout, form, and spatial flow.
+
+
+Architectural Drawings (2D & 3D)
+Detailed plans, elevations, and visualisations that help you understand the project before construction begins.
+
+
+Building Approvals & Compliance
+Support with local regulations, approvals, and documentation required for project execution.
+
+
+Structural Coordination
+Close coordination with structural engineers to ensure safety, stability, and feasibility.
+
+
+Site Planning & Optimization
+Efficient use of land considering slope, access, drainage, and future expansion.
+
+
+4. OUR APPROACH
+
+Step 1 – Understanding the Site
+We study terrain, soil conditions, climate exposure, and surrounding context.
+
+
+Step 2 – Requirement Analysis
+We align design with your budget, usage, and long-term goals.
+
+
+Step 3 – Concept Development
+Initial layouts and ideas are developed and refined with your feedback.
+
+
+Step 4 – Detailed Design
+Technical drawings are prepared for execution, ensuring clarity for contractors.
+
+
+Step 5 – Execution Support
+We assist during construction to ensure the design is implemented correctly.
+
+
+5. WHY ARCHITECTURE IN NORTH EAST INDIA NEEDS A DIFFERENT APPROACH
+
+Generic building designs often fail in this region.
+We address key challenges such as:
+Heavy and continuous rainfall 
+High humidity and ventilation needs 
+Seismic zone considerations 
+Sloped and uneven land conditions 
+Limited access to certain construction materials 
+Our designs are developed to perform effectively under these conditions.
+
+
+6. DESIGN PRINCIPLES WE FOLLOW
+
+Climate Responsiveness
+Designs that manage heat, rain, and airflow effectively.
+
+
+Structural Awareness
+Coordination with engineering systems from the start.
+
+
+Efficient Space Planning
+Maximising usability without unnecessary complexity.
+
+
+Cost-Conscious Design
+Balancing quality with realistic budget expectations.
+
+
+7. PROJECT TYPES
+
+We work across:
+Residential Buildings (Homes, Villas) 
+Commercial Spaces (Offices, Retail) 
+Institutional Projects 
+Mixed-Use Developments 
+
+
+8. WHAT CLIENTS CAN EXPECT
+
+Clear communication at every stage 
+Structured design process 
+Practical and buildable solutions 
+Designs aligned with local conditions 
+
+
+9. CLOSING STATEMENT
+
+Architecture is not just about creating buildings it is about creating spaces that function well in their environment and continue to perform over time.
+
+
+CTA SECTION
+Planning a new building?
+Let’s design it right from the start.
+Button:
+Start Your Architectural Project
+
+---
+
+D - INTERIOR DESIGN PAGE 
+
+
+1. HERO SECTION
+
+Implement a 'Flipbook Style' gallery using GSAP Flip or a horizontal scroll section that feels like turning pages. 
+Use the images: interior-Page-1-Cover.png, interior-Page-2-Philosophy.png, interior-Page-3-Living-Spaces.png, interior-Page-4-Bedrooms.png, interior-Page-5-Workspaces-Offices.png, interior-Page-6-Materials-Details.png, interior-Page-7-North-East-Context.png, interior-Page-8-Closing-Page-CTA.png 
+
+Headline:
+Interiors Designed for Real Living
+Subheading:
+Functional, refined, and built for the climate and lifestyle of North East India.
+CTA:
+Plan Your Interior
+
+
+2. OVERVIEW
+
+Interior design is not just about appearance it is about how a space feels and functions every day.
+At Form & Space Architects, we design interiors that are practical, durable, and aligned with the way people live and work in the North East.
+Our focus is on creating spaces that remain comfortable, efficient, and relevant over time.
+
+
+3. WHAT WE DO
+
+Residential Interior Design
+Homes designed for comfort, usability, and long-term living.
+
+
+Commercial & Office Interiors
+Workspaces that improve productivity while maintaining a clean and professional aesthetic.
+
+
+Space Planning
+Optimising layouts to ensure efficient movement and usage of available space.
+
+
+Material & Finish Selection
+Choosing materials that perform well in local conditions—especially humidity and wear.
+
+
+Furniture & Lighting Design
+Custom solutions that balance functionality with visual clarity.
+
+
+4. OUR APPROACH
+
+Understanding Lifestyle
+We begin by understanding how you use your space on a daily basis.
+
+
+Design Development
+Layouts, materials, and concepts are developed based on your needs and budget.
+
+
+Material Selection
+We recommend materials that are durable, available, and suitable for the region.
+
+
+Execution Support
+We coordinate with vendors and contractors to maintain design quality.
+
+
+5. DESIGN PHILOSOPHY
+
+Functional First
+Every element must serve a purpose.
+
+
+Minimal & Timeless
+Avoiding unnecessary design complexity.
+
+
+Comfort-Oriented
+Spaces that feel natural and easy to live in.
+
+
+Durability Focused
+Designs that withstand humidity, usage, and time.
+
+
+6. NORTH EAST ADVANTAGE
+
+Interior design in this region requires careful consideration of:
+High humidity affecting materials and finishes 
+Ventilation requirements 
+Seasonal changes 
+Availability of materials and logistics 
+We ensure every design decision works within these conditions.
+
+
+7. PROJECT TYPES
+
+Residential Homes & Apartments 
+Offices & Workspaces 
+Retail & Commercial Interiors 
+Renovation & Space Upgrades 
+
+
+8. WHAT CLIENTS CAN EXPECT
+
+Clear design concepts before execution 
+Practical material recommendations 
+Budget-aligned solutions 
+Smooth coordination during implementation 
+
+
+9. CLOSING STATEMENT
+
+A well-designed interior should feel effortless to use and maintain.
+That is the standard we design for.
+
+
+CTA SECTION
+
+Looking to design or upgrade your space?
+Let’s create something that works for you.
+Button:
+Start Your Interior Project
+
+---
+
+E - URBAN DESIGN PAGE 
+
+
+1. HERO SECTION
+
+Use the image: Urban-design-01-Top.png
+
+Headline:
+Designing Spaces Beyond Individual Buildings
+Subheading:
+Planning developments that respond to terrain, infrastructure, and the evolving urban landscape of North East India.
+CTA:
+Start Your Urban Project
+
+
+2. OVERVIEW
+
+Urban design is about how spaces connect, function, and grow over time.
+At Form & Space Architects, we focus on creating layouts and developments that are practical, scalable, and aligned with the realities of the North East where terrain, infrastructure, and rapid urbanisation require careful planning.
+Our work ensures that projects are not only well-designed but also usable and sustainable in the long term.
+
+
+3. WHAT WE DO
+
+Layout Planning
+Designing efficient layouts for residential, commercial, and mixed-use developments.
+
+
+Township Design
+Planning large-scale developments with integrated infrastructure and spatial organisation.
+
+
+Public Space Design
+Creating functional and accessible shared spaces that enhance usability and community interaction.
+
+
+Land Use Optimization
+Maximising the value and usability of available land while maintaining balance and flow.
+
+
+Infrastructure Planning
+Coordinating roads, drainage, utilities, and access systems within the design.
+
+
+4. OUR APPROACH
+
+Understanding the Land
+We analyse terrain, slope, and site conditions before planning.
+
+
+Connectivity Planning
+Ensuring smooth movement—both vehicular and pedestrian.
+
+
+Zoning & Function Allocation
+Assigning spaces logically based on use and accessibility.
+
+
+Future Scalability
+Designing layouts that can adapt to future expansion and changes.
+
+
+Implementation Clarity
+Providing clear plans that can be executed efficiently on ground.
+
+
+5. NORTH EAST CONTEXT
+
+Urban design in this region requires a different perspective due to:
+Hilly and uneven terrain 
+Heavy rainfall and drainage challenges 
+Rapid urban expansion in cities like Guwahati 
+Infrastructure limitations in developing areas 
+Our designs are developed to work within these conditions, not against them.
+
+
+6. DESIGN PRINCIPLES
+
+Practical Planning
+Layouts that can actually be implemented.
+
+
+Efficient Land Use
+Avoiding wastage while maintaining usability.
+
+
+Integrated Infrastructure
+Designing utilities and systems as part of the plan.
+
+
+Long-Term Thinking
+Planning for growth, not just immediate use.
+
+
+7. PROJECT TYPES
+
+Residential Layouts 
+Township Developments 
+Commercial Planning Projects 
+Institutional Campus Planning 
+Mixed-Use Developments 
+
+
+8. WHAT CLIENTS CAN EXPECT
+
+Structured and logical layouts 
+Clear zoning and circulation plans 
+Designs aligned with real-world constraints 
+Practical solutions for execution 
+
+
+9. CLOSING STATEMENT
+
+Urban design is not just about planning land it is about creating spaces that function efficiently and grow sustainably over time.
+
+
+CTA SECTION
+
+Planning a large-scale project?
+Let’s design it with clarity from the start.
+Button:
+Discuss Your Urban Project    
+
+
+---
+
+F - MEP CONSULTANCY PAGE 
+
+
+1. HERO SECTION
+
+Use a composite of the following images: MEP.png, MEP_1.png, MEP_2.png, MEP_3.png
+
+MEP_1.png, MEP_2.png, MEP_3.png must be placed on top of MEP.png within the existing 3 blank white panes with a jittery effect animation on hovering the mouse.
+
+Headline:
+Engineering Systems That Make Buildings Work
+Subheading:
+Reliable mechanical, electrical, and plumbing solutions designed for the conditions of North East India.
+CTA:
+Consult Our Experts
+
+
+2. OVERVIEW
+
+A well-designed building depends on more than just structure and aesthetics.
+Mechanical, Electrical, and Plumbing (MEP) systems are what make a building functional, safe, and efficient.
+At Form & Space Architects, we provide integrated MEP consultancy to ensure all technical systems are planned correctly from the start and perform reliably over time.
+
+
+3. WHAT WE DO
+
+Electrical System Design
+Planning safe and efficient power distribution, lighting systems, and backup solutions.
+
+
+Plumbing & Drainage Planning
+Designing water supply and drainage systems suited for heavy rainfall and usage demands.
+
+
+HVAC (Cooling & Ventilation)
+Ensuring proper airflow, temperature control, and indoor comfort.
+
+
+Fire Safety Systems
+Designing systems that meet safety standards and protect occupants.
+
+
+Energy Efficiency Solutions
+Optimising systems to reduce energy consumption and operational costs.
+
+
+4. OUR APPROACH
+
+Early Integration
+MEP systems are planned alongside architecture—not added later.
+
+
+Coordination with Design
+We ensure all systems fit seamlessly within the building layout.
+
+
+Practical Execution
+Designs are made considering real installation and maintenance conditions.
+
+
+Performance Focus
+Every system is designed for reliability, efficiency, and long-term use.
+
+
+5. NORTH EAST FOCUS
+
+MEP design in this region requires careful planning due to:
+Heavy rainfall affecting drainage systems 
+Power fluctuations and backup requirements 
+Water availability and storage challenges 
+Humidity impacting ventilation and cooling 
+Our solutions are specifically adapted to these conditions.
+
+
+6. WHY MEP MATTERS
+
+Even a well-designed building can fail without proper systems.
+Common issues we help prevent:
+Poor drainage leading to water damage 
+Inefficient electrical layouts 
+Inadequate ventilation 
+High maintenance costs 
+
+
+7. PROJECT TYPES
+
+Residential Buildings 
+Commercial Spaces 
+Offices & Workspaces 
+Institutional Projects 
+
+
+8. WHAT CLIENTS CAN EXPECT
+
+Clear system planning 
+Efficient layouts and routing 
+Reduced long-term maintenance issues 
+Coordination with construction teams 
+
+
+9. CLOSING STATEMENT
+
+Good engineering systems are not visible but they define how well a building performs every day.
+
+
+CTA SECTION
+Building or planning a project?
+Ensure the systems are designed right from the beginning.
+Button:
+Get MEP Consultation
+
+---
+
+G - PROJECTS / PORTFOLIO PAGE 
+
+Create a functional, visual-heavy portfolio. 
+Use a CSS Grid layout for project cards.  
+Implement category filters (Residential, Commercial, Interiors, Planning) as described.
+When a filter is clicked, use GSAP to animate the entry/exit of project cards smoothly.  
+Project cards should use thin borders and the accent color for a premium feel."
+
+1. HERO SECTION
+
+Implement a 'Flipbook Style' gallery using GSAP Flip or a horizontal scroll section that feels like turning pages, using the following:
+"E:\_WORK_\form-n-space\docs\formnspaceimphal.com\hvs-mansion- Patsoi"
+"E:\_WORK_\form-n-space\docs\formnspaceimphal.com\jj-school-ghari"
+"E:\_WORK_\form-n-space\docs\formnspaceimphal.com\johnsons-residence"
+"E:\_WORK_\form-n-space\docs\formnspaceimphal.com\niranjoys-residence"
+"E:\_WORK_\form-n-space\docs\formnspaceimphal.com\residence-building-kangabam-leikai"
+"E:\_WORK_\form-n-space\docs\formnspaceimphal.com\residence-sangakpham"
+
+
+
+Headline:
+Selected Work Across the North East
+Subheading:
+A collection of residential, commercial, and planning projects designed with context, functionality, and long-term performance in mind.
+
+
+2. INTRO SECTION
+
+Our projects reflect our approach each design is shaped by its location, purpose, and the realities of building in North East India.
+From residential homes in Imphal to expanding work in Guwahati and surrounding regions, our portfolio continues to grow with diverse and practical design solutions.
+
+
+3. PROJECT DISPLAY STRUCTURE (VERY IMPORTANT)
+
+Go through: "E:\_WORK_\form-n-space\docs\formnspaceimphal.com"
+
+Each project should follow a consistent format:
+
+Project Name
+Location: Imphal / Guwahati / etc.
+Type: Residential / Commercial / Planning
+Short Description:
+A brief 2–3 line description explaining the concept and purpose of the project.
+Key Highlights:
+Climate-responsive design 
+Efficient space planning 
+Material suitability for region 
+Structural or design uniqueness 
+
+
+4. SAMPLE PROJECT CONTENT (USE THIS FORMAT)
+
+Go through: "E:\_WORK_\form-n-space\docs\formnspaceimphal.com"
+
+Private Residence – Imphal
+Location: Imphal, Manipur
+Type: Residential
+Description:
+A modern residential project designed to handle high rainfall conditions while maintaining natural ventilation and efficient spatial flow.
+Highlights:
+Sloped roof design for drainage 
+Cross-ventilation planning 
+Use of locally available materials 
+Optimised layout for compact land 
+
+
+Commercial Office – Guwahati
+Location: Guwahati, Assam
+Type: Commercial
+Description:
+A functional office space designed to maximise usability within limited urban space, with a focus on lighting and workflow efficiency.
+Highlights:
+Space-efficient interior layout 
+Integrated lighting design 
+Practical circulation planning 
+Cost-conscious material selection 
+
+
+5. PROJECT CATEGORIES
+
+Add filters:
+Residential 
+Commercial 
+Interiors 
+Planning 
+
+After the filters, read and understand this: /formnspaceimphal.com/category/projects/projects.html
+
+
+6. VISUAL PRESENTATION (VERY IMPORTANT)
+
+For each project include:
+3–6 high-quality images 
+1 plan or layout (if available) 
+Before/after (for interiors) 
+Avoid stock images—real work builds trust.
+
+
+7. POSITIONING LINE
+
+Every project is approached with the same objective—
+to create spaces that function well within their environment and continue to perform over time.
+
+
+8. CTA SECTION
+
+Planning a project?
+Let’s bring your ideas into a clear and buildable design.
+Button:
+Start Your Project
+
+---
+
+H - CONTACT PAGE 
+
+
+1. HERO SECTION
+
+Headline:
+Let’s Start Your Project
+Subheading:
+Whether you’re building in Imphal, Guwahati, or anywhere across North East India—we’re ready to work with you.
+
+
+2. CONTACT INTRO
+
+Have a project in mind or need consultation?
+Reach out to us for architectural design, interiors, planning, or technical consultancy. We’ll guide you with a clear and practical approach from the beginning.
+
+
+3. OFFICE LOCATIONS
+
+Imphal (Head Office)
+Form & Space Architects
+Yaiskul Moirangkhom
+Opposite Shyamasakhi School, 2nd Floor
+Imphal, Manipur
+
+
+Guwahati (Expansion Office)
+Form & Space Architects
+Coming Soon!
+
+
+4. CONTACT DETAILS
+
+Phone:
++91 98622 82193
++91 70056 08046
+Email:
+formandspace.arch@gmail.com
+
+
+5. QUICK CONTACT OPTIONS (VERY IMPORTANT)
+
+WhatsApp Us
+For faster response and quick discussions.
+Button: Chat on WhatsApp
+
+
+Call Us
+Speak directly with our team.
+Button: Call Now
+
+
+6. CONTACT FORM (MAIN LEAD CAPTURE)
+
+Form Fields:
+Full Name 
+Phone Number 
+Email Address 
+Project Location 
+Project Type
+(Residential / Commercial / Interior / Planning / Consultancy) 
+Message 
+
+
+7. TRUST LINE
+
+All enquiries are handled professionally and kept confidential.
+We aim to respond within 24 hours.
+
+
+8. SERVICE AREA SECTION
+
+We currently serve clients across:
+Imphal (Manipur) 
+Guwahati (Assam) 
+Meghalaya 
+Nagaland 
+Other North East regions 
+
+
+9. HIGH-CONVERSION CTA SECTION
+
+Not sure where to start?
+We offer an initial consultation to help you understand your project requirements, budget, and next steps.
+Button:
+Book a Consultation
+
+
+10. FINAL POSITIONING LINE
+
+Designing for the North East
+with clarity, practicality, and long-term performance in mind.
+Must Have:
+WhatsApp floating button 
+Click-to-call phone number 
+Fast-loading form (no long forms)
+
+---
+
+Review all pages for consistency:
+
+1. Ensure all transitions are fluid (GSAP).  
+2. Optimize all images using Astro's \<Image /\> component.  
+3. Verify that the smooth scroll (Lenis) works perfectly across all routes.
+4. Verify that the website is mobile responsive.

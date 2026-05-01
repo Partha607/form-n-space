@@ -1,0 +1,180 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import projects from '../../data/portfolio-projects.json';
+
+type Project = {
+  slug: string;
+  title: string;
+  location: string;
+  area: string;
+  type: string;
+  description: string;
+  images: string[];
+  tags: string[];
+};
+
+export function getStaticPaths() {
+  return (projects as Project[]).map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={project.title}>
+  <Header />
+
+  <section class="project-hero">
+    <div class="container">
+      <a href="/portfolio" class="back-link">← Back to Portfolio</a>
+      <h1>{project.title}</h1>
+      <p class="subtitle">{project.location}{project.area ? ` • ${project.area}` : ''}</p>
+    </div>
+  </section>
+
+  <section class="section project-content">
+    <div class="container project-grid">
+      <aside class="project-copy">
+        <span class="eyebrow">{project.type}</span>
+        <h2>Project Overview</h2>
+        <p>{project.description}</p>
+        <h3>Key Highlights</h3>
+        <ul>
+          <li>Context-responsive planning and spatial flow.</li>
+          <li>Climate and material suitability for North East India.</li>
+          <li>Balanced aesthetics, functionality, and durability.</li>
+        </ul>
+        <div class="tag-row">
+          {project.tags?.map((tag: string) => <span>{tag.replaceAll('-', ' ')}</span>)}
+        </div>
+      </aside>
+
+      <div class="project-gallery">
+        {project.images?.map((img: string, index: number) => (
+          <figure class="gallery-item">
+            <img src={img} alt={`${project.title} image ${index + 1}`} loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .project-hero {
+    padding: 170px 0 70px;
+    background: linear-gradient(180deg, #f4eee2 0%, #f5f1e8 100%);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 18px;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .project-hero h1 {
+    max-width: 920px;
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+
+  .subtitle {
+    color: color-mix(in srgb, var(--color-heading) 75%, white);
+    margin-bottom: 0;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.35fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .project-copy {
+    position: sticky;
+    top: 110px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    padding: 28px;
+  }
+
+  .project-copy h2 {
+    margin-bottom: 14px;
+  }
+
+  .project-copy h3 {
+    margin: 20px 0 10px;
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-heading);
+  }
+
+  .project-copy ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-copy li {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tag-row {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag-row span {
+    padding: 6px 10px;
+    border: 1px solid var(--color-border-strong);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .project-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .gallery-item {
+    margin: 0;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1024px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .project-copy {
+      position: static;
+    }
+  }
+</style>

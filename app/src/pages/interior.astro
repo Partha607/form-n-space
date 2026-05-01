@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FlipbookGallery from '../components/FlipbookGallery.astro';
+
+import i1 from '../assets/interior-Page-1-Cover.png';
+import i2 from '../assets/interior-Page-2-Philosophy.png';
+import i3 from '../assets/interior-Page-3-Living-Spaces.png';
+import i4 from '../assets/interior-Page-4-Bedrooms.png';
+import i5 from '../assets/interior-Page-5-Workspaces-Offices.png';
+import i6 from '../assets/interior-Page-6-Materials-Details.png';
+import i7 from '../assets/interior-Page-7-North-East-Context.png';
+import i8 from '../assets/interior-Page-8-Closing-Page-CTA.png';
+
+const images = [
+  { src: i1.src, alt: "Interior Cover" },
+  { src: i2.src, alt: "Philosophy" },
+  { src: i3.src, alt: "Living Spaces" },
+  { src: i4.src, alt: "Bedrooms" },
+  { src: i5.src, alt: "Workspaces" },
+  { src: i6.src, alt: "Materials" },
+  { src: i7.src, alt: "North East Context" },
+  { src: i8.src, alt: "Closing CTA" },
+];
+---
+
+<Layout title="Interior Design">
+  <Header />
+
+  <!-- HERO SECTION WITH FLIPBOOK -->
+  <section class="section editorial-section">
+    <div class="container text-center hero-headline-wrap">
+      <h1 class="hero-title">Interiors Designed for Real Living</h1>
+      <p class="hero-subtitle">Functional, refined, and built for the climate and lifestyle of North East India.</p>
+      <a href="/contact" class="btn btn-primary">Plan Your Interior</a>
+    </div>
+    
+    <FlipbookGallery images={images} />
+  </section>
+
+  <!-- OVERVIEW & WHAT WE DO -->
+  <section class="section editorial-section bg-alt">
+    <div class="container grid-layout">
+      <div class="content-block">
+        <h2 class="section-title text-left">Overview</h2>
+        <p class="overview-text">
+          Interior design is not just about appearance: it is about how a space feels and functions every day.
+          At Form & Space Architects, we design interiors that are practical, durable, and aligned with the way people live and work in the North East.
+          Our focus is on creating spaces that remain comfortable, efficient, and relevant over time.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="section-title text-left">What We Do</h2>
+        <div class="do-list">
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Residential Interior Design</h4>
+            <p>Homes designed for comfort, usability, and long-term living.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Commercial & Office Interiors</h4>
+            <p>Workspaces that improve productivity while maintaining a clean aesthetic.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Space Planning</h4>
+            <p>Optimising layouts to ensure efficient movement and usage.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Material & Finish Selection</h4>
+            <p>Choosing materials that perform well in local conditions: especially humidity.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Furniture & Lighting Design</h4>
+            <p>Custom solutions balancing functionality with visual clarity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH AND PHILOSOPHY -->
+  <section class="section editorial-section">
+    <div class="container grid-layout">
+      <div>
+        <h2 class="section-title text-left">Our Approach</h2>
+        <ul class="clean-list">
+          <li><strong>Understanding Lifestyle:</strong> We begin by understanding how you use your space daily.</li>
+          <li><strong>Design Development:</strong> Layouts, materials, and concepts are developed based on needs and budget.</li>
+          <li><strong>Material Selection:</strong> We recommend materials that are durable and suitable for the region.</li>
+          <li><strong>Execution Support:</strong> We coordinate with vendors to maintain design quality.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="section-title text-left">Design Philosophy</h2>
+        <ul class="clean-list">
+          <li><strong>Functional First:</strong> Every element must serve a purpose.</li>
+          <li><strong>Minimal & Timeless:</strong> Avoiding unnecessary design complexity.</li>
+          <li><strong>Comfort-Oriented:</strong> Spaces that feel natural and easy to live in.</li>
+          <li><strong>Durability Focused:</strong> Designs that withstand humidity, usage, and time.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section editorial-section cta-section text-center bg-alt">
+    <div class="container">
+      <h2>Looking to design or upgrade your space?</h2>
+      <p>Let’s create something that works for you.</p>
+      <a href="/contact" class="btn btn-primary cta-link">Start Your Interior Project</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-headline-wrap {
+    margin-bottom: 40px;
+    padding-top: 100px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    color: var(--color-heading);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 10px auto 30px;
+    text-align: center;
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .text-left {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+
+  .overview-text {
+    font-size: clamp(1.04rem, 1.2vw, 1.18rem);
+    line-height: 1.85;
+  }
+
+  .do-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .do-item {
+    padding: 20px;
+    background-color: var(--color-surface);
+  }
+
+  .do-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+  }
+
+  .clean-list {
+    list-style: none;
+  }
+
+  .clean-list li {
+    padding: 16px 18px;
+    border: 1px solid rgba(194, 168, 120, 0.3);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    background: color-mix(in srgb, var(--color-surface) 90%, white);
+  }
+
+  .clean-list strong {
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    margin-right: 10px;
+  }
+
+  .cta-link {
+    margin-top: 30px;
+  }
+
+  .cta-section p {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  @media (max-width: 768px) {
+    .grid-layout { grid-template-columns: 1fr; gap: 50px; }
+  }
+</style>

@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroParallax from '../components/HeroParallax.astro';
+import { Image } from 'astro:assets';
+import topImg from '../assets/Urban-design-01-Top.png';
+import bottomImg from '../assets/Urban-design-02.png';
+---
+
+<Layout title="Urban Design">
+  <Header revealOnScroll={true} />
+
+  <!-- HERO SECTION -->
+  <section class="hero-wrap">
+    <HeroParallax 
+      title="Designing Spaces Beyond Individual Buildings"
+      subtitle="Planning developments that respond to terrain, infrastructure, and the evolving urban landscape of North East India."
+      imageSrc={topImg.src}
+      primaryAction="Start Your Urban Project"
+      primaryLink="/contact"
+    />
+  </section>
+
+  <!-- OVERVIEW & WHAT WE DO -->
+  <section class="section editorial-section">
+    <div class="container grid-layout">
+      <div class="content-block">
+        <h2 class="section-title text-left">Overview</h2>
+        <p class="overview-text">
+          Urban design is about how spaces connect, function, and grow over time.
+          At Form & Space Architects, we focus on creating layouts and developments that are practical, scalable, and aligned with the realities of the North East: where terrain, infrastructure, and rapid urbanisation require careful planning.
+          Our work ensures that projects are not only well-designed but also usable and sustainable in the long term.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="section-title text-left">What We Do</h2>
+        <div class="do-list">
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Layout Planning</h4>
+            <p>Designing efficient layouts for residential, commercial, and mixed-use developments.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Township Design</h4>
+            <p>Planning large-scale developments with integrated infrastructure and spatial organisation.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Public Space Design</h4>
+            <p>Creating functional and accessible shared spaces that enhance usability and community interaction.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Land Use Optimization</h4>
+            <p>Maximising the value and usability of available land while maintaining balance and flow.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Infrastructure Planning</h4>
+            <p>Coordinating roads, drainage, utilities, and access systems within the design.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE & APPROACH -->
+  <section class="section editorial-section section-muted">
+    <div class="container">
+      <div class="image-showcase">
+        <Image src={bottomImg} alt="Urban Design Planning" class="full-width-img thin-border" loading="lazy" />
+      </div>
+
+      <div class="grid-layout approach-grid">
+        <div>
+          <h2 class="section-title text-left">Our Approach</h2>
+          <ul class="clean-list">
+            <li><strong>Understanding the Land:</strong> We analyse terrain, slope, and site conditions before planning.</li>
+            <li><strong>Connectivity Planning:</strong> Ensuring smooth movement: both vehicular and pedestrian.</li>
+            <li><strong>Zoning & Function Allocation:</strong> Assigning spaces logically based on use and accessibility.</li>
+            <li><strong>Future Scalability:</strong> Designing layouts that can adapt to future expansion and changes.</li>
+            <li><strong>Implementation Clarity:</strong> Providing clear plans that can be executed efficiently on ground.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="section-title text-left">North East Context</h2>
+          <p class="overview-text context-intro">
+            Urban design in this region requires a different perspective due to:
+          </p>
+          <div class="tags">
+            <span class="tag">Hilly and uneven terrain</span>
+            <span class="tag">Heavy rainfall and drainage challenges</span>
+            <span class="tag">Rapid urban expansion</span>
+            <span class="tag">Infrastructure limitations</span>
+          </div>
+          <p class="overview-text context-outro">
+            Our designs are developed to work within these conditions, not against them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section editorial-section cta-section text-center">
+    <div class="container">
+      <h2>Planning a large-scale project?</h2>
+      <p>Let’s design it with clarity from the start.</p>
+      <a href="/contact" class="btn btn-primary cta-link">Discuss Your Urban Project</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .text-left {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+
+  .overview-text {
+    font-size: clamp(1.04rem, 1.2vw, 1.18rem);
+    line-height: 1.84;
+  }
+
+  .do-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .do-item {
+    padding: 20px;
+    background-color: var(--color-surface);
+  }
+
+  .do-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+  }
+
+  .clean-list {
+    list-style: none;
+  }
+
+  .clean-list li {
+    padding: 16px 18px;
+    border: 1px solid rgba(194, 168, 120, 0.3);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    background: color-mix(in srgb, var(--color-surface) 90%, white);
+  }
+
+  .clean-list strong {
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    margin-right: 10px;
+  }
+
+  .image-showcase {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .full-width-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .tag {
+    background: var(--color-surface);
+    color: var(--color-heading);
+    border: 1px solid var(--color-border-strong);
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .approach-grid {
+    margin-top: 60px;
+  }
+
+  .context-intro {
+    margin-bottom: 20px;
+  }
+
+  .context-outro {
+    margin-top: 20px;
+    color: var(--color-accent);
+  }
+
+  .cta-section p {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 720px;
+  }
+
+  .cta-link {
+    margin-top: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .grid-layout { grid-template-columns: 1fr; gap: 50px; }
+  }
+</style>

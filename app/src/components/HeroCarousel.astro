@@ -1,0 +1,367 @@
+---
+export interface Props {
+  slides: { src: string; alt: string }[];
+  title: string;
+  subtitle: string;
+  primaryAction?: string;
+  primaryLink?: string;
+  secondaryAction?: string;
+  secondaryLink?: string;
+}
+
+const {
+  slides,
+  title,
+  subtitle,
+  primaryAction,
+  primaryLink,
+  secondaryAction,
+  secondaryLink,
+} = Astro.props;
+---
+
+<section class="hero-carousel">
+  <!-- Slides -->
+  <div class="slides-container">
+    {slides.map((slide, i) => (
+      <div class={`slide ${i === 0 ? 'active' : ''}`} data-index={i}>
+        <div class="slide-bg" style={`background-image:url('${slide.src}')`}></div>
+        <div class="slide-overlay"></div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Text content -->
+  <div class="carousel-content container">
+    <span class="eyebrow">Form & Space Architects</span>
+    <h1 class="carousel-title">{title}</h1>
+    <p class="carousel-subtitle">{subtitle}</p>
+    {(primaryAction || secondaryAction) && (
+      <div class="carousel-actions">
+        {primaryAction && <a href={primaryLink || '#'} class="btn btn-primary">{primaryAction}</a>}
+        {secondaryAction && <a href={secondaryLink || '#'} class="btn">{secondaryAction}</a>}
+      </div>
+    )}
+  </div>
+
+  <!-- Progress dots -->
+  <div class="carousel-dots">
+    {slides.map((_, i) => (
+      <button class={`dot ${i === 0 ? 'active' : ''}`} data-dot={i} aria-label={`Go to slide ${i + 1}`}></button>
+    ))}
+  </div>
+
+  <!-- Arrows -->
+  <button class="carousel-arrow prev" id="prev-arrow" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="carousel-arrow next" id="next-arrow" aria-label="Next slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28">
+      <polyline points="9 6 15 12 9 18"></polyline>
+    </svg>
+  </button>
+
+  <!-- Scroll cue -->
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<style>
+  .hero-carousel {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(180deg, #253f34 0%, #1f3a2e 100%);
+  }
+
+  /* ── Slides ── */
+  .slides-container {
+    position: absolute;
+    inset: 0;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0s; /* GSAP handles transitions */
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  .slide-bg {
+    position: absolute;
+    inset: -10%;
+    background-size: cover;
+    background-position: center;
+    transform-origin: center center;
+  }
+
+  .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(18, 33, 27, 0.2) 0%,
+      rgba(18, 33, 27, 0.78) 75%,
+      rgba(18, 33, 27, 0.9) 100%
+    );
+  }
+
+  /* ── Text content ── */
+  .carousel-content {
+    position: absolute;
+    bottom: 18%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    color: #f3efe8;
+    text-align: left;
+    max-width: 980px;
+  }
+
+  .carousel-title {
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    color: #f3efe8;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 900px;
+    text-wrap: balance;
+  }
+
+  .carousel-subtitle {
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    color: rgba(243, 239, 232, 0.85);
+    max-width: 760px;
+    margin-bottom: 36px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .carousel-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* Override global btn for dark hero context */
+  .carousel-actions .btn {
+    background: transparent;
+    color: #f3efe8;
+    border-color: rgba(243, 239, 232, 0.6);
+  }
+
+  .carousel-actions .btn:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #f3efe8;
+  }
+
+  .carousel-actions .btn-primary {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #f3efe8;
+  }
+
+  .carousel-actions .btn-primary:hover {
+    background: transparent;
+    border-color: rgba(243, 239, 232, 0.6);
+  }
+
+  /* ── Dots ── */
+  .carousel-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 32px;
+    height: 2px;
+    background: rgba(243, 239, 232, 0.35);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, width 0.3s;
+  }
+
+  .dot.active {
+    background: var(--color-accent);
+    width: 48px;
+  }
+
+  /* ── Arrows ── */
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(243, 239, 232, 0.11);
+    border: 1px solid rgba(194, 168, 120, 0.5);
+    color: #f3efe8;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    backdrop-filter: blur(6px);
+  }
+
+  .carousel-arrow:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .prev { left: 28px; }
+  .next { right: 28px; }
+
+  /* ── Scroll cue ── */
+  .scroll-cue {
+    position: absolute;
+    right: 32px;
+    bottom: 40px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(243, 239, 232, 0.6);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 72px;
+    background: linear-gradient(to bottom, rgba(194,168,120,0.8), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.15); }
+  }
+
+  @media (max-width: 768px) {
+    .carousel-content { bottom: 22%; }
+    .prev { left: 14px; }
+    .next { right: 14px; }
+    .scroll-cue { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-line {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  const slides    = document.querySelectorAll<HTMLElement>('.slide');
+  const bgs       = document.querySelectorAll<HTMLElement>('.slide-bg');
+  const dots      = document.querySelectorAll<HTMLButtonElement>('.dot');
+  const prevBtn   = document.getElementById('prev-arrow');
+  const nextBtn   = document.getElementById('next-arrow');
+  const content   = document.querySelector<HTMLElement>('.carousel-content');
+
+  let current     = 0;
+  let isAnimating = false;
+  let autoTimer:  ReturnType<typeof setTimeout>;
+  const shouldReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function goTo(next: number, dir: 1 | -1 = 1) {
+    if (isAnimating || next === current) return;
+    isAnimating = true;
+
+    const from = slides[current];
+    const to   = slides[next];
+    const fromBg = bgs[current];
+    const toBg   = bgs[next];
+
+    // Make the incoming slide visible on top
+    gsap.set(to, { opacity: 0, zIndex: 2 });
+    gsap.set(from, { zIndex: 1 });
+    gsap.set(toBg, { xPercent: dir * 8, scale: 1.08 });
+
+    // Animate out content first
+    const tl = gsap.timeline({ onComplete: () => { isAnimating = false; } });
+    const transitionDuration = shouldReduceMotion ? 0.01 : 0.8;
+    const bgDuration = shouldReduceMotion ? 0.01 : 1.4;
+
+    tl.to(content, { opacity: 0, y: shouldReduceMotion ? 0 : -16, duration: shouldReduceMotion ? 0.01 : 0.35, ease: 'power2.in' })
+      .to(to, { opacity: 1, duration: transitionDuration, ease: 'power2.inOut' }, '<')
+      .to(toBg, { xPercent: 0, scale: 1, duration: bgDuration, ease: 'power3.out' }, '<')
+      .to(fromBg, { xPercent: dir * -8, duration: bgDuration, ease: 'power3.out' }, '<')
+      .to(content, { opacity: 1, y: 0, duration: shouldReduceMotion ? 0.01 : 0.5, ease: 'power2.out' })
+      .set(from, { opacity: 0, zIndex: 0 });
+
+    // Update state
+    from.classList.remove('active');
+    to.classList.add('active');
+    dots[current].classList.remove('active');
+    dots[next].classList.add('active');
+    current = next;
+  }
+
+  function advance() {
+    const next = (current + 1) % slides.length;
+    goTo(next, 1);
+  }
+
+  function startAuto() {
+    clearTimeout(autoTimer);
+    autoTimer = setTimeout(() => { advance(); startAuto(); }, shouldReduceMotion ? 9000 : 5500);
+  }
+
+  // Dot clicks
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      const dir = i > current ? 1 : -1;
+      goTo(i, dir as 1 | -1);
+      startAuto();
+    });
+  });
+
+  nextBtn?.addEventListener('click', () => { advance(); startAuto(); });
+  prevBtn?.addEventListener('click', () => {
+    const prev = (current - 1 + slides.length) % slides.length;
+    goTo(prev, -1);
+    startAuto();
+  });
+
+  // Initial entrance animation
+  if (content) {
+    gsap.fromTo(content,
+      { opacity: 0, y: shouldReduceMotion ? 0 : 50 },
+      { opacity: 1, y: 0, duration: shouldReduceMotion ? 0.01 : 1.6, delay: shouldReduceMotion ? 0 : 0.5, ease: 'power3.out' }
+    );
+  }
+
+  // Ken-Burns on current active slide
+  if (bgs[0] && !shouldReduceMotion) {
+    gsap.fromTo(bgs[0],
+      { scale: 1.08 },
+      { scale: 1, duration: 6, ease: 'none' }
+    );
+  }
+
+  startAuto();
+</script>

@@ -1,0 +1,15 @@
+# Astro app
+app/node_modules/
+app/dist/
+app/.astro/
+
+# Editor / local
+.cursor/
+.idea/
+*.log
+.DS_Store
+
+# Env
+.env
+.env.*
+!.env.example

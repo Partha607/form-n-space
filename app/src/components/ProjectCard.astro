@@ -1,0 +1,138 @@
+---
+export interface Props {
+  title: string;
+  location: string;
+  type: string;
+  description: string;
+  imageSrc: string;
+  link: string;
+}
+
+const { title, location, type, description, imageSrc, link } = Astro.props;
+---
+
+<a href={link} class="project-card" data-type={type.toLowerCase()}>
+  <div class="card-image-wrap">
+    <img src={imageSrc} alt={title} class="card-image" />
+    <div class="card-overlay">
+      <span class="view-project">View Project</span>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="card-meta">
+      <span class="card-type">{type}</span>
+      <span class="card-location">{location}</span>
+    </div>
+    <h3 class="card-title">{title}</h3>
+    <p class="card-desc">{description}</p>
+    <span class="card-link">Explore Details</span>
+  </div>
+</a>
+
+<style>
+  .project-card {
+    display: block;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    overflow: hidden;
+    transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+    cursor: pointer;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .project-card:hover .card-image {
+    transform: scale(1.05);
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(31, 58, 46, 0.2) 0%, rgba(31, 58, 46, 0.65) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .project-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .view-project {
+    color: var(--color-bg);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 4px;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover .view-project {
+    transform: translateY(0);
+  }
+
+  .card-content {
+    padding: 24px;
+  }
+
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-size: 1.45rem;
+    margin-bottom: 12px;
+    color: var(--color-heading);
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    opacity: 0.88;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .card-link {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-accent);
+    border-bottom: 1px solid rgba(194, 168, 120, 0.5);
+    padding-bottom: 2px;
+  }
+</style>

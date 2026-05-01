@@ -1,0 +1,301 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact Us">
+  <Header />
+
+  <!-- HERO SECTION -->
+  <section class="page-hero editorial-section text-center">
+    <div class="container">
+      <h1>Let’s Start Your Project</h1>
+      <p class="subtitle">Whether you’re building in Imphal, Guwahati, or anywhere across North East India: we’re ready to work with you.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT INTRO & DETAILS -->
+  <section class="section bg-alt">
+    <div class="container grid-layout">
+      <!-- Info Column -->
+      <div class="contact-info">
+        <h2 class="text-accent contact-lead">Have a project in mind?</h2>
+        <p class="intro-text">
+          Reach out to us for architectural design, interiors, planning, or technical consultancy. We’ll guide you with a clear and practical approach from the beginning.
+        </p>
+
+        <div class="office-details">
+          <div class="office-card thin-border">
+            <h4>Imphal (Head Office)</h4>
+            <p>Form & Space Architects<br/>
+            Yaiskul Moirangkhom<br/>
+            Opposite Shyamasakhi School, 2nd Floor<br/>
+            Imphal, Manipur</p>
+          </div>
+          <div class="office-card thin-border">
+            <h4>Guwahati (Expansion Office)</h4>
+            <p>Form & Space Architects<br/>
+            Coming Soon!</p>
+          </div>
+        </div>
+
+        <div class="quick-contact">
+          <div class="qc-item">
+            <h4>Phone</h4>
+            <p>+91 98622 82193<br/>+91 70056 08046</p>
+          </div>
+          <div class="qc-item">
+            <h4>Email</h4>
+            <p>formandspace.arch@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <a href="https://wa.me/919862282193" target="_blank" class="btn btn-primary whatsapp-btn">Chat on WhatsApp</a>
+          <a href="tel:+919862282193" class="btn">Call Now</a>
+        </div>
+      </div>
+
+      <!-- Form Column -->
+      <div class="contact-form-wrap thin-border">
+        <h3 class="form-title">Send us a message</h3>
+        <p class="form-subtitle">All enquiries are handled professionally and kept confidential. We aim to respond within 24 hours.</p>
+        
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required />
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="location">Project Location</label>
+              <input type="text" id="location" required />
+            </div>
+            <div class="form-group">
+              <label for="type">Project Type</label>
+              <select id="type" required>
+                <option value="">Select a type...</option>
+                <option value="residential">Residential</option>
+                <option value="commercial">Commercial</option>
+                <option value="interior">Interior</option>
+                <option value="planning">Planning</option>
+                <option value="consultancy">Consultancy</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGH CONVERSION CTA -->
+  <section class="section editorial-section text-center">
+    <div class="container">
+      <h2 class="conversion-title">Not sure where to start?</h2>
+      <p class="conversion-copy">We offer an initial consultation to help you understand your project requirements, budget, and next steps.</p>
+      <a href="#" class="btn btn-primary">Book a Consultation</a>
+    </div>
+  </section>
+
+  <Footer />
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919862282193" target="_blank" class="float-wa">
+    <!-- SVG WhatsApp Icon -->
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
+      <path d="M16 2.1c-7.7 0-14 6.3-14 14 0 2.4.6 4.7 1.7 6.7L2 29.8l7.2-1.9c2 1 4.3 1.5 6.7 1.5 7.7 0 14-6.3 14-14s-6.3-14-13.9-14zM16 26.8c-2 0-4-.5-5.8-1.5l-.4-.2-4.3 1.1 1.2-4.2-.3-.5C5.4 19.8 4.8 18 4.8 16c0-6.2 5-11.2 11.2-11.2s11.2 5 11.2 11.2-5 11.2-11.2 11.2zm6.2-8.5c-.3-.2-2-.1-2.3-.9-.1-.2-.2-.5-.4-.7-.2-.2-.5-.3-.7-.3s-.6.2-.8.5c-.2.3-.6.7-.8.7-.2 0-.5-.1-.7-.2-1-.5-2.2-1.4-3.1-2.4-.7-.8-1.2-1.7-1.4-2-.2-.3 0-.6.2-.8.2-.2.3-.5.5-.7.2-.2.3-.4.2-.6-.1-.2-.5-1.1-.7-1.5-.2-.4-.3-.3-.5-.3h-.4c-.3 0-.7.1-.9.4-.3.3-1 .9-1 2.3 0 1.4 1 2.8 1.1 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z" fill="#fff"/>
+    </svg>
+  </a>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 180px 0 100px;
+    background: linear-gradient(180deg, #f4eee2 0%, #f5f1e8 100%);
+  }
+  
+  .page-hero h1 {
+    margin-bottom: 20px;
+  }
+  
+  .page-hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  .intro-text {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+  }
+
+  .office-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .office-card {
+    padding: 20px;
+    background: var(--color-surface);
+  }
+
+  .office-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--color-heading);
+  }
+
+  .quick-contact {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .qc-item h4 {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-accent);
+    margin-bottom: 5px;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 20px;
+  }
+
+  .contact-form-wrap {
+    padding: 40px;
+    background: var(--color-surface);
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .form-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+  }
+
+  .form-row .form-group {
+    flex: 1;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(194, 168, 120, 0.4);
+    background: transparent;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--color-heading);
+  }
+
+  .float-wa {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+
+  .float-wa:hover {
+    transform: scale(1.1);
+  }
+
+  .contact-lead {
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+
+  .whatsapp-btn {
+    background-color: #25D366;
+    border-color: #25D366;
+  }
+
+  .form-submit-btn {
+    width: 100%;
+  }
+
+  .conversion-title {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    margin-bottom: 20px;
+  }
+
+  .conversion-copy {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 2.5rem; }
+    .grid-layout { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { flex-direction: column; gap: 0; }
+    .action-buttons { flex-direction: column; }
+  }
+</style>

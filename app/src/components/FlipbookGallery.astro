@@ -1,0 +1,283 @@
+---
+export interface Props {
+  images: { src: string; alt: string }[];
+}
+
+const { images } = Astro.props;
+const total = images.length;
+---
+
+<div class="flipbook-outer">
+  <div class="flipbook-scene">
+    <div class="scene-graphic scene-graphic-left" aria-hidden="true"></div>
+    <div class="scene-graphic scene-graphic-right" aria-hidden="true"></div>
+    <!-- Stack of pages — rendered back-to-front -->
+    {images.map((img, i) => (
+      <div class="page" data-page={i} style={`z-index:${total - i}`} data-caption={img.alt}>
+        <div class="page-front">
+          <img src={img.src} alt={img.alt} class="page-img" />
+          <div class="page-overlay"></div>
+        </div>
+        <div class="page-back">
+          <!-- Back of the page, can be a subtle texture or blank -->
+          <div class="back-inner"></div>
+        </div>
+      </div>
+    ))}
+
+    <!-- Page counter -->
+    <div class="page-counter">
+      <span class="page-current">1</span>
+      <span class="page-sep">&nbsp;/&nbsp;</span>
+      <span class="page-total">{total}</span>
+    </div>
+  </div>
+
+  <!-- Caption bar -->
+  <div class="flipbook-caption">
+    <span class="caption-text">{images[0].alt}</span>
+    <span class="scroll-hint">Scroll to flip pages</span>
+  </div>
+</div>
+
+<style>
+  .flipbook-outer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0;
+    background: #f3efe8;
+    user-select: none;
+  }
+
+  .flipbook-scene {
+    position: relative;
+    width: min(1000px, 90vw);
+    aspect-ratio: 16 / 9; /* Landscape album format */
+    perspective: 3000px;
+    overflow: hidden;
+    border: 1px solid rgba(194, 168, 120, 0.45);
+    background: #fff;
+    isolation: isolate;
+  }
+
+  .scene-graphic {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 9%;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(194, 168, 120, 0.15), rgba(194, 168, 120, 0.03)),
+      repeating-linear-gradient(45deg, rgba(31, 58, 46, 0.08), rgba(31, 58, 46, 0.08) 2px, transparent 2px, transparent 7px);
+  }
+
+  .scene-graphic-left {
+    left: 0;
+    border-right: 1px solid rgba(194, 168, 120, 0.35);
+  }
+
+  .scene-graphic-right {
+    right: 0;
+    border-left: 1px solid rgba(194, 168, 120, 0.35);
+  }
+
+  .page {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transition: transform 1.55s cubic-bezier(0.2, 0.75, 0.12, 1), opacity 0.35s ease;
+    z-index: 2;
+  }
+
+  .page-front,
+  .page-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  }
+
+  .page-front {
+    z-index: 2;
+    background: #fff;
+    border: 1px solid rgba(194, 168, 120, 0.3);
+  }
+
+  .page-back {
+    transform: rotateY(180deg);
+    background: #e5e0d5; /* Subtle back-of-page color */
+    border: 1px solid rgba(194, 168, 120, 0.3);
+  }
+
+  .back-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(31,58,46,0.05), transparent);
+  }
+
+  .page-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure image is fully visible */
+    background: #fff;
+  }
+
+  .page-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.09), transparent 18%);
+    pointer-events: none;
+  }
+
+  .page.flipped {
+    transform: rotateY(-180deg);
+    opacity: 0.1;
+  }
+
+  .page-counter {
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    letter-spacing: 1px;
+  }
+
+  .flipbook-caption {
+    margin-top: 60px;
+    width: min(1000px, 90vw);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(194, 168, 120, 0.4);
+    padding-top: 20px;
+  }
+
+  .caption-text {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-heading);
+    opacity: 0.8;
+  }
+
+  .scroll-hint {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .flipbook-scene { aspect-ratio: 4 / 3; }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll<HTMLElement>('.flipbook-outer').forEach((outer) => {
+    const pages = Array.from(outer.querySelectorAll<HTMLElement>('.page'));
+    const pageImages = Array.from(outer.querySelectorAll<HTMLElement>('.page-img'));
+    const counter = outer.querySelector<HTMLElement>('.page-current');
+    const caption = outer.querySelector<HTMLElement>('.caption-text');
+    const scene = outer.querySelector<HTMLElement>('.flipbook-scene');
+    const leftGraphic = outer.querySelector<HTMLElement>('.scene-graphic-left');
+    const rightGraphic = outer.querySelector<HTMLElement>('.scene-graphic-right');
+
+    const total = pages.length;
+    const maxIndex = Math.max(0, total - 1);
+    let current = 0;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function updateUI(index: number) {
+      if (counter) counter.textContent = String(index + 1);
+      if (caption) caption.textContent = pages[index].dataset.caption || '';
+    }
+
+    function setFlipState(index: number) {
+      pages.forEach((page, i) => {
+        if (i < index) {
+          page.classList.add('flipped');
+        } else {
+          page.classList.remove('flipped');
+        }
+      });
+      updateUI(index);
+    }
+
+    if (scene && maxIndex > 0) {
+      ScrollTrigger.create({
+        trigger: outer,
+        start: 'center center',
+        end: `+=${Math.max(900, maxIndex * 680)}`,
+        pin: true,
+        pinSpacing: true,
+        scrub: prefersReduced ? false : 1.35,
+        snap: prefersReduced
+          ? false
+          : {
+              snapTo: (value: number) => Math.round(value * maxIndex) / maxIndex,
+              duration: { min: 0.24, max: 0.52 },
+              delay: 0.05,
+              ease: 'power1.inOut'
+            },
+        onUpdate: (self) => {
+          const index = Math.min(maxIndex, Math.max(0, Math.round(self.progress * maxIndex)));
+          if (index !== current) {
+            current = index;
+            setFlipState(current);
+          }
+        }
+      });
+    }
+
+    if (scene && !prefersReduced) {
+      gsap.to(pageImages, {
+        yPercent: 10,
+        ease: 'none',
+        stagger: 0.03,
+        scrollTrigger: {
+          trigger: outer,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      if (leftGraphic && rightGraphic) {
+        gsap.to(leftGraphic, {
+          xPercent: -8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: outer,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+        gsap.to(rightGraphic, {
+          xPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: outer,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+      }
+    }
+
+    setFlipState(0);
+  });
+</script>

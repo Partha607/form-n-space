@@ -1,0 +1,163 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+  imageSrc: string;
+  primaryAction?: string;
+  primaryLink?: string;
+  secondaryAction?: string;
+  secondaryLink?: string;
+}
+
+const { title, subtitle, imageSrc, primaryAction, primaryLink, secondaryAction, secondaryLink } = Astro.props;
+---
+
+<section class="hero-parallax">
+  <div class="hero-bg" style={`background-image: url('${imageSrc}');`}></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h1 class="hero-title">{title}</h1>
+    <p class="hero-subtitle">{subtitle}</p>
+    {(primaryAction || secondaryAction) && (
+      <div class="hero-actions">
+        {primaryAction && <a href={primaryLink || "#"} class="btn btn-primary">{primaryAction}</a>}
+        {secondaryAction && <a href={secondaryLink || "#"} class="btn">{secondaryAction}</a>}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero-parallax {
+    position: relative;
+    min-height: 64vh;
+    height: clamp(460px, 72vh, 760px);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-bg);
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 35%;
+    z-index: 1;
+    will-change: transform;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(31, 58, 46, 0.4), rgba(31, 58, 46, 0.8));
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 900px;
+    padding-top: 90px;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+    color: var(--color-bg);
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: #e0dccc;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  /* Override standard btn for hero */
+  .hero-actions .btn {
+    border-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+  
+  .hero-actions .btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-heading);
+  }
+
+  .hero-actions .btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-heading);
+    border-color: var(--color-accent);
+  }
+
+  .hero-actions .btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-bg);
+  }
+
+  @media (max-width: 768px) {
+    .hero-parallax {
+      height: 58vh;
+      min-height: 420px;
+    }
+    .hero-title {
+      font-size: 3rem;
+    }
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-bg {
+      background-position: center center;
+    }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const heroBgs = document.querySelectorAll('.hero-bg');
+  const shouldReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  heroBgs.forEach((bg) => {
+    gsap.to(bg, {
+      yPercent: shouldReduceMotion ? 0 : 10,
+      ease: "none",
+      scrollTrigger: {
+        trigger: bg.parentElement,
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      } 
+    });
+  });
+
+  const heroContents = document.querySelectorAll('.hero-content');
+  heroContents.forEach((content) => {
+    gsap.fromTo(content, 
+      { opacity: 0, y: shouldReduceMotion ? 0 : 50 },
+      { opacity: 1, y: 0, duration: shouldReduceMotion ? 0.01 : 1.5, ease: "power3.out" }
+    );
+  });
+</script>

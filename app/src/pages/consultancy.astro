@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FlipbookGallery from '../components/FlipbookGallery.astro';
+import con1 from '../assets/Consultancy-services-01.png';
+import con2 from '../assets/Consultancy-services-02.png';
+import con3 from '../assets/Consultancy-services-03.png';
+
+const galleryImages = [
+  { src: con1.src, alt: "Consultancy Service 1" },
+  { src: con2.src, alt: "Consultancy Service 2" },
+  { src: con3.src, alt: "Consultancy Service 3" },
+];
+---
+
+<Layout title="Architectural Design & Consultancy">
+  <Header />
+
+  <!-- HERO SECTION -->
+  <section class="page-hero editorial-section bg-offwhite">
+    <div class="container text-center">
+      <h1>Architecture That Responds<br/>to Its Environment</h1>
+      <p class="subtitle">Designing buildings that are functional, climate-responsive, and built for long-term performance in North East India.</p>
+      <a href="/contact" class="btn btn-primary hero-cta">Discuss Your Project</a>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section editorial-section text-center">
+    <div class="container">
+      <div class="content-block">
+        <p class="intro-text">
+          At Form & Space Architects, architectural design is approached as a balance between aesthetics, structure, and real-world conditions.
+          We create buildings that are not only visually refined but also practical to build, maintain, and use over time.
+          Every project is tailored to its location: considering rainfall, terrain, seismic conditions, and material availability across the North East.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLIPBOOK GALLERY -->
+  <FlipbookGallery images={galleryImages} />
+
+  <!-- WHAT WE DO & OUR APPROACH -->
+  <section class="section editorial-section bg-alt">
+    <div class="container grid-layout">
+      <div>
+        <h2 class="section-title text-left">What We Do</h2>
+        <div class="list-item">
+          <h4 class="text-accent">Concept Design & Planning</h4>
+          <p>We translate your requirements into clear design concepts that define layout, form, and spatial flow.</p>
+        </div>
+        <div class="list-item">
+          <h4 class="text-accent">Architectural Drawings (2D & 3D)</h4>
+          <p>Detailed plans, elevations, and visualisations that help you understand the project before construction begins.</p>
+        </div>
+        <div class="list-item">
+          <h4 class="text-accent">Building Approvals & Compliance</h4>
+          <p>Support with local regulations, approvals, and documentation required for project execution.</p>
+        </div>
+        <div class="list-item">
+          <h4 class="text-accent">Structural Coordination</h4>
+          <p>Close coordination with structural engineers to ensure safety, stability, and feasibility.</p>
+        </div>
+        <div class="list-item">
+          <h4 class="text-accent">Site Planning & Optimization</h4>
+          <p>Efficient use of land considering slope, access, drainage, and future expansion.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="section-title text-left">Our Approach</h2>
+        <div class="step-list">
+          <div class="step-item">
+            <span class="step-num">01</span>
+            <div>
+              <h4>Understanding the Site</h4>
+              <p>We study terrain, soil conditions, climate exposure, and surrounding context.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">02</span>
+            <div>
+              <h4>Requirement Analysis</h4>
+              <p>We align design with your budget, usage, and long-term goals.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">03</span>
+            <div>
+              <h4>Concept Development</h4>
+              <p>Initial layouts and ideas are developed and refined with your feedback.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">04</span>
+            <div>
+              <h4>Detailed Design + Execution Support</h4>
+              <p>Technical drawings are prepared for site execution, and we guide implementation for quality and clarity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NORTH EAST APPROACH -->
+  <section class="section editorial-section text-center">
+    <div class="container">
+      <h2 class="section-title challenge-title">Why Architecture in North East India Needs a Different Approach</h2>
+      <p class="challenge-intro">Generic building designs often fail in this region. We address key challenges such as:</p>
+      
+      <div class="challenge-grid">
+        <div class="challenge-item thin-border">Heavy and continuous rainfall</div>
+        <div class="challenge-item thin-border">High humidity and ventilation needs</div>
+        <div class="challenge-item thin-border">Seismic zone considerations</div>
+        <div class="challenge-item thin-border">Sloped and uneven land conditions</div>
+        <div class="challenge-item thin-border">Limited access to certain materials</div>
+      </div>
+      <p class="challenge-outro">Our designs are developed to perform effectively under these conditions.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section editorial-section cta-section text-center bg-alt">
+    <div class="container">
+      <h2>Planning a new building?</h2>
+      <p>Let’s design it right from the start.</p>
+      <a href="/contact" class="btn btn-primary hero-cta">Start Your Architectural Project</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 180px 0 100px;
+  }
+
+  .bg-offwhite {
+    background-color: #f3efe8;
+    color: var(--color-heading);
+  }
+  
+  .page-hero h1 {
+    font-size: 4rem;
+    color: inherit;
+    margin-bottom: 20px;
+  }
+  
+  .page-hero .subtitle {
+    font-size: 1.2rem;
+    color: inherit;
+    opacity: 0.8;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .intro-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+    font-family: var(--font-heading);
+    line-height: 1.75;
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .text-left {
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .list-item {
+    margin-bottom: 26px;
+    border-bottom: 1px solid rgba(194, 168, 120, 0.25);
+    padding-bottom: 16px;
+  }
+
+  .list-item h4 {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .step-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 14px;
+    border: 1px solid rgba(194, 168, 120, 0.35);
+    background: var(--color-surface);
+    padding: 18px;
+    min-height: 140px;
+  }
+
+  .step-num {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-accent);
+    line-height: 1;
+    opacity: 0.5;
+  }
+
+  .step-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--color-heading);
+  }
+
+  .challenge-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .challenge-item {
+    padding: 15px 25px;
+    background: var(--color-surface);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .challenge-title {
+    max-width: 800px;
+    margin: 0 auto 30px;
+  }
+
+  .challenge-intro {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+
+  .challenge-outro {
+    font-size: 1.2rem;
+    margin-top: 40px;
+    color: var(--color-accent);
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .cta-section p {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .hero-cta {
+    margin-top: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 2.5rem; }
+    .grid-layout { grid-template-columns: 1fr; gap: 50px; }
+    .step-list { grid-template-columns: 1fr; }
+  }
+</style>

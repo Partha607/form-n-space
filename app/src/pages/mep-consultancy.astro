@@ -1,0 +1,242 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+import mepBg from '../assets/MEP.png';
+import mepOverviewImg from '../assets/MEP_1.png';
+---
+
+<Layout title="MEP Consultancy">
+  <Header revealOnScroll={true} />
+
+  <!-- HERO SECTION -->
+  <section class="hero-wrap">
+    <div class="mep-hero-bg" style={`background-image: url(${mepBg.src})`}>
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Engineering Systems That Make Buildings Work</h1>
+          <p class="subtitle">Reliable mechanical, electrical, and plumbing solutions designed for the conditions of North East India.</p>
+          <a href="/contact" class="btn btn-primary hero-cta">Consult Our Experts</a>
+        </div>
+      </div>
+      <div class="slide-overlay"></div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW & WHAT WE DO -->
+  <section class="section editorial-section">
+    <div class="container grid-layout">
+      <div>
+        <h2 class="section-title text-left">Overview</h2>
+        <p class="overview-text">
+          A well-designed building depends on more than just structure and aesthetics.
+          Mechanical, Electrical, and Plumbing (MEP) systems are what make a building functional, safe, and efficient.
+          At Form & Space Architects, we provide integrated MEP consultancy to ensure all technical systems are planned correctly from the start and perform reliably over time.
+        </p>
+        <div class="overview-visual thin-border">
+          <Image src={mepOverviewImg} alt="MEP systems planning overview" class="overview-img" loading="lazy" />
+        </div>
+      </div>
+
+      <div>
+        <h2 class="section-title text-left">What We Do</h2>
+        <div class="do-list">
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Electrical System Design</h4>
+            <p>Planning safe and efficient power distribution, lighting systems, and backup solutions.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Plumbing & Drainage Planning</h4>
+            <p>Designing water supply and drainage systems suited for heavy rainfall and usage demands.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">HVAC (Cooling & Ventilation)</h4>
+            <p>Ensuring proper airflow, temperature control, and indoor comfort.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Fire Safety Systems</h4>
+            <p>Designing systems that meet safety standards and protect occupants.</p>
+          </div>
+          <div class="do-item thin-border">
+            <h4 class="text-accent">Energy Efficiency Solutions</h4>
+            <p>Optimising systems to reduce energy consumption and operational costs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH & NORTH EAST FOCUS -->
+  <section class="section editorial-section section-muted">
+    <div class="container grid-layout">
+      <div>
+        <h2 class="section-title text-left">Our Approach</h2>
+        <ul class="clean-list">
+          <li><strong>Early Integration:</strong> MEP systems are planned alongside architecture: not added later.</li>
+          <li><strong>Coordination with Design:</strong> We ensure all systems fit seamlessly within the building layout.</li>
+          <li><strong>Practical Execution:</strong> Designs are made considering real installation and maintenance conditions.</li>
+          <li><strong>Performance Focus:</strong> Every system is designed for reliability, efficiency, and long-term use.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="section-title text-left">North East Focus</h2>
+        <p class="overview-text context-intro">
+          MEP design in this region requires careful planning due to:
+        </p>
+        <ul class="clean-list">
+          <li>Heavy rainfall affecting drainage systems</li>
+          <li>Power fluctuations and backup requirements</li>
+          <li>Water availability and storage challenges</li>
+          <li>Humidity impacting ventilation and cooling</li>
+        </ul>
+        <p class="overview-text context-outro">
+          Our solutions are specifically adapted to these conditions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section editorial-section cta-section text-center">
+    <div class="container">
+      <h2>Building or planning a project?</h2>
+      <p>Ensure the systems are designed right from the beginning.</p>
+      <a href="/contact" class="btn btn-primary hero-cta">Get MEP Consultation</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .mep-hero-bg {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+  }
+
+  .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(31, 58, 46, 0.4);
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .text-left {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+
+  .overview-text {
+    font-size: clamp(1.04rem, 1.2vw, 1.18rem);
+    line-height: 1.84;
+  }
+
+  .do-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .overview-visual {
+    margin-top: 28px;
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .overview-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .do-item {
+    padding: 20px;
+    background-color: var(--color-surface);
+  }
+
+  .do-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+  }
+
+  .clean-list {
+    list-style: none;
+  }
+
+  .clean-list li {
+    padding: 16px 18px;
+    border: 1px solid rgba(194, 168, 120, 0.3);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    background: color-mix(in srgb, var(--color-surface) 90%, white);
+  }
+
+  .clean-list strong {
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    margin-right: 10px;
+  }
+
+  .context-intro {
+    margin-bottom: 20px;
+  }
+
+  .context-outro {
+    margin-top: 20px;
+    color: var(--color-accent);
+  }
+
+  .hero-cta {
+    margin-top: 30px;
+  }
+
+  .cta-section p {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 700px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .hero-content { align-items: end; }
+    .grid-layout { grid-template-columns: 1fr; gap: 50px; }
+  }
+</style>

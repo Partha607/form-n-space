@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Welcome">
+  <main class="splash-container">
+    <!-- Architecture Card -->
+    <a href="/architecture" class="splash-card splash-architecture">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <h2>Architecture</h2>
+        <span class="view-link">Enter Site</span>
+      </div>
+    </a>
+
+    <!-- Infrastructure Card -->
+    <button class="splash-card splash-infrastructure" id="infra-btn">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <h2>Infrastructure</h2>
+        <span class="view-link">View Projects</span>
+      </div>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="construction-modal">
+      <div class="modal-box thin-border">
+        <h3>Site Under Construction</h3>
+        <p>Our infrastructure portfolio is currently being updated. Please check back later or visit our architecture section.</p>
+        <button class="btn btn-primary close-modal">Close</button>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .splash-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--color-bg);
+  }
+
+  .splash-card {
+    flex: 1;
+    position: relative;
+    border: none;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-right: 1px solid var(--color-accent);
+  }
+
+  .splash-card:last-child {
+    border-right: none;
+  }
+
+  .card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(80%) brightness(0.6);
+    transition: filter 0.6s ease;
+    z-index: 1;
+  }
+
+  .splash-architecture .card-bg {
+    /* Using a generic placeholder since we didn't specify an exact splash image, but using something architectural */
+    background-color: var(--color-heading);
+    /* Update with an actual image if needed */
+  }
+
+  .splash-infrastructure .card-bg {
+    background-color: #2b362e;
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--color-bg);
+  }
+
+  .card-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--color-bg);
+    letter-spacing: 2px;
+  }
+
+  .view-link {
+    display: inline-block;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 5px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-accent);
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(43, 43, 43, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .modal-box {
+    background: var(--color-bg);
+    padding: 50px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+
+  .modal-box h3 {
+    margin-bottom: 20px;
+  }
+  
+  .modal-box p {
+    margin-bottom: 30px;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    .splash-container {
+      flex-direction: column;
+    }
+    .splash-card {
+      border-right: none;
+      border-bottom: 1px solid var(--color-accent);
+    }
+    .card-content h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  const cards = document.querySelectorAll('.splash-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      // Expand hovered card, dim the other
+      gsap.to(card, { flex: 1.2, duration: 0.6, ease: "power3.out" });
+      const bg = card.querySelector('.card-bg');
+      gsap.to(bg, { filter: "grayscale(0%) brightness(0.9)", duration: 0.6 });
+
+      cards.forEach(other => {
+        if (other !== card) {
+          gsap.to(other, { flex: 0.8, duration: 0.6, ease: "power3.out" });
+          const otherBg = other.querySelector('.card-bg');
+          gsap.to(otherBg, { filter: "grayscale(100%) brightness(0.4)", duration: 0.6 });
+        }
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      // Reset
+      cards.forEach(c => {
+        gsap.to(c, { flex: 1, duration: 0.6, ease: "power3.out" });
+        const bg = c.querySelector('.card-bg');
+        gsap.to(bg, { filter: "grayscale(80%) brightness(0.6)", duration: 0.6 });
+      });
+    });
+  });
+
+  // Modal logic
+  const infraBtn = document.getElementById('infra-btn');
+  const modal = document.getElementById('construction-modal');
+  const modalBox = modal?.querySelector('.modal-box');
+  const closeBtn = document.querySelector('.close-modal');
+
+  infraBtn?.addEventListener('click', () => {
+    gsap.to(modal, { opacity: 1, pointerEvents: 'auto', duration: 0.3 });
+    gsap.fromTo(modalBox, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, delay: 0.1 });
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    gsap.to(modal, { opacity: 0, pointerEvents: 'none', duration: 0.3 });
+  });
+</script>
