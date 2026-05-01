@@ -13,7 +13,10 @@ import mepOverviewImg from '../assets/MEP_1.png';
 
   <!-- HERO SECTION -->
   <section class="hero-wrap">
-    <div class="mep-hero-bg" style={`background-image: url(${mepBg.src})`}>
+    <div
+      class="mep-hero-bg old-money-hero-stack"
+      style={`--mep-hero-img: url(${mepBg.src})`}
+    >
       <div class="container hero-content">
         <div class="hero-text">
           <h1>Engineering Systems That Make Buildings Work</h1>
@@ -26,22 +29,26 @@ import mepOverviewImg from '../assets/MEP_1.png';
   </section>
 
   <!-- OVERVIEW & WHAT WE DO -->
-  <section class="section editorial-section">
-    <div class="container grid-layout">
+  <section class="section editorial-section mep-overview-section">
+    <div class="container single-col-prose">
       <div>
-        <h2 class="section-title text-left">Overview</h2>
-        <p class="overview-text">
+        <h2 class="section-title block-title">Overview</h2>
+        <p class="overview-text overview-lead">
           A well-designed building depends on more than just structure and aesthetics.
           Mechanical, Electrical, and Plumbing (MEP) systems are what make a building functional, safe, and efficient.
           At Form & Space Architects, we provide integrated MEP consultancy to ensure all technical systems are planned correctly from the start and perform reliably over time.
         </p>
-        <div class="overview-visual thin-border">
-          <Image src={mepOverviewImg} alt="MEP systems planning overview" class="overview-img" loading="lazy" />
+        <div class="overview-visual-bleed">
+          <div class="overview-visual thin-border">
+            <div class="overview-img-frame">
+              <Image src={mepOverviewImg} alt="MEP systems planning overview" loading="lazy" />
+            </div>
+          </div>
         </div>
       </div>
 
-      <div>
-        <h2 class="section-title text-left">What We Do</h2>
+      <div class="stack-after">
+        <h2 class="section-title block-title">What We Do</h2>
         <div class="do-list">
           <div class="do-item thin-border">
             <h4 class="text-accent">Electrical System Design</h4>
@@ -70,9 +77,9 @@ import mepOverviewImg from '../assets/MEP_1.png';
 
   <!-- APPROACH & NORTH EAST FOCUS -->
   <section class="section editorial-section section-muted">
-    <div class="container grid-layout">
+    <div class="container single-col-prose">
       <div>
-        <h2 class="section-title text-left">Our Approach</h2>
+        <h2 class="section-title block-title">Our Approach</h2>
         <ul class="clean-list">
           <li><strong>Early Integration:</strong> MEP systems are planned alongside architecture: not added later.</li>
           <li><strong>Coordination with Design:</strong> We ensure all systems fit seamlessly within the building layout.</li>
@@ -81,8 +88,8 @@ import mepOverviewImg from '../assets/MEP_1.png';
         </ul>
       </div>
 
-      <div>
-        <h2 class="section-title text-left">North East Focus</h2>
+      <div class="stack-after">
+        <h2 class="section-title block-title">North East Focus</h2>
         <p class="overview-text context-intro">
           MEP design in this region requires careful planning due to:
         </p>
@@ -92,7 +99,7 @@ import mepOverviewImg from '../assets/MEP_1.png';
           <li>Water availability and storage challenges</li>
           <li>Humidity impacting ventilation and cooling</li>
         </ul>
-        <p class="overview-text context-outro">
+        <p class="overview-text context-outro accent-line">
           Our solutions are specifically adapted to these conditions.
         </p>
       </div>
@@ -112,13 +119,42 @@ import mepOverviewImg from '../assets/MEP_1.png';
 </Layout>
 
 <style>
-  .mep-hero-bg {
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
+  .hero-wrap {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* Photo on top (contain); letterbox = ornamental stack on #9BA7A0 sage (no green cast) */
+  .mep-hero-bg.old-money-hero-stack {
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    box-sizing: border-box;
     position: relative;
     display: flex;
     align-items: center;
+    background-color: #9ba7a0;
+    background-image:
+      var(--mep-hero-img),
+      radial-gradient(ellipse 125% 82% at 50% -8%, rgba(245, 241, 232, 0.45), transparent 58%),
+      radial-gradient(ellipse 65% 88% at 0% 100%, rgba(110, 118, 116, 0.55), transparent 54%),
+      radial-gradient(ellipse 65% 88% at 100% 0%, rgba(135, 142, 138, 0.5), transparent 54%),
+      repeating-linear-gradient(
+        118deg,
+        rgba(255, 255, 255, 0.09) 0 0.5px,
+        transparent 0.5px 18px
+      ),
+      repeating-linear-gradient(
+        -58deg,
+        transparent 0,
+        transparent 24px,
+        rgba(194, 168, 120, 0.12) 24px,
+        rgba(194, 168, 120, 0.12) 25px
+      ),
+      linear-gradient(168deg, #8d9593 0%, #9ba7a0 32%, #929a97 58%, #858c8a 100%);
+    background-size: contain, cover, cover, cover, cover, cover, cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .hero-content {
@@ -145,23 +181,84 @@ import mepOverviewImg from '../assets/MEP_1.png';
   .slide-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(31, 58, 46, 0.4);
+    z-index: 5;
+    background: linear-gradient(
+      to bottom,
+      rgba(38, 40, 42, 0.28) 0%,
+      rgba(38, 40, 42, 0.38) 100%
+    );
+    pointer-events: none;
   }
 
-  .grid-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+  .single-col-prose {
+    max-width: 40rem;
+    margin: 0 auto;
   }
 
-  .text-left {
-    text-align: left;
-    margin-bottom: 30px;
+  .block-title {
+    text-align: center;
+    margin-bottom: 1.1rem;
+  }
+
+  .stack-after {
+    margin-top: 2.25rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(194, 168, 120, 0.35);
   }
 
   .overview-text {
     font-size: clamp(1.04rem, 1.2vw, 1.18rem);
     line-height: 1.84;
+    text-align: center;
+  }
+
+  .overview-lead {
+    margin-bottom: 0;
+  }
+
+  .mep-overview-section {
+    overflow-x: clip;
+  }
+
+  .overview-visual-bleed {
+    margin-top: clamp(2rem, 5vw, 3rem);
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 0 clamp(16px, 3vw, 28px);
+    box-sizing: border-box;
+  }
+
+  .overview-visual {
+    margin: 0 auto;
+    max-width: min(640px, 100%);
+    padding: clamp(14px, 2vw, 24px);
+    background: var(--color-surface);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Portrait MEP diagram: natural aspect, capped so it never dominates or stretches */
+  .overview-img-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .overview-img-frame :global(img) {
+    display: block;
+    width: auto;
+    max-width: min(400px, 80vw);
+    max-height: min(62vh, 640px);
+    height: auto;
+    object-fit: contain;
+  }
+
+  .overview-img-frame :global(picture) {
+    display: flex;
+    justify-content: center;
   }
 
   .do-list {
@@ -170,43 +267,39 @@ import mepOverviewImg from '../assets/MEP_1.png';
     gap: 20px;
   }
 
-  .overview-visual {
-    margin-top: 28px;
-    background: var(--color-surface);
-    overflow: hidden;
-  }
-
-  .overview-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    object-position: center;
-  }
-
   .do-item {
     padding: 20px;
     background-color: var(--color-surface);
+    text-align: center;
+  }
+
+  .do-item p {
+    margin: 0;
+    line-height: 1.62;
   }
 
   .do-item h4 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
     font-family: var(--font-body);
     text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   .clean-list {
     list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .clean-list li {
-    padding: 16px 18px;
+    padding: 14px 16px;
     border: 1px solid rgba(194, 168, 120, 0.3);
-    font-size: 1.1rem;
-    margin-bottom: 12px;
+    font-size: 1.02rem;
+    margin-bottom: 10px;
     background: color-mix(in srgb, var(--color-surface) 90%, white);
+    line-height: 1.58;
+    text-align: center;
   }
 
   .clean-list strong {
@@ -216,12 +309,24 @@ import mepOverviewImg from '../assets/MEP_1.png';
   }
 
   .context-intro {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
 
   .context-outro {
-    margin-top: 20px;
+    margin-top: 1.1rem;
+    margin-bottom: 0;
     color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .accent-line {
+    display: block;
+    width: 100%;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 1.55;
   }
 
   .hero-cta {
@@ -236,7 +341,8 @@ import mepOverviewImg from '../assets/MEP_1.png';
   }
 
   @media (max-width: 900px) {
-    .hero-content { align-items: end; }
-    .grid-layout { grid-template-columns: 1fr; gap: 50px; }
+    .hero-content {
+      align-items: end;
+    }
   }
 </style>

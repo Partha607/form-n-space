@@ -9,9 +9,29 @@ import Footer from '../components/Footer.astro';
 
   <!-- HERO SECTION -->
   <section class="page-hero editorial-section text-center">
-    <div class="container">
+    <div class="container contact-hero-inner">
       <h1>Let’s Start Your Project</h1>
-      <p class="subtitle">Whether you’re building in Imphal, Guwahati, or anywhere across North East India: we’re ready to work with you.</p>
+      <p class="subtitle contact-hero-tagline">
+        Whether you’re building in Imphal, Guwahati, or anywhere across North East India: we’re ready to work with you.
+      </p>
+      <div class="contact-map-snippet">
+        <iframe
+          title="Head office location — Imphal (Plus code: QWVR+3H)"
+          class="contact-map-iframe"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=QWVR%2B3H%20Imphal%20Manipur&amp;hl=en&amp;z=16&amp;output=embed"
+        ></iframe>
+        <p class="map-plus-code">Plus code: QWVR+3H · Imphal, Manipur</p>
+        <p class="map-attribution">
+          Map data © Google · Source:
+          <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">Google Maps</a>
+          ·
+          <a href="https://www.google.com/intl/en_US/help/terms_maps/" target="_blank" rel="noopener noreferrer"
+            >Terms</a
+          >
+        </p>
+      </div>
     </div>
   </section>
 
@@ -130,20 +150,71 @@ import Footer from '../components/Footer.astro';
 
 <style>
   .page-hero {
-    padding: 180px 0 100px;
+    padding: 160px 0 72px;
     background: linear-gradient(180deg, #f4eee2 0%, #f5f1e8 100%);
   }
-  
-  .page-hero h1 {
-    margin-bottom: 20px;
+
+  .contact-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
   }
-  
-  .page-hero .subtitle {
+
+  .page-hero h1 {
+    margin-bottom: 18px;
+  }
+
+  .page-hero .subtitle,
+  .contact-hero-tagline {
     font-size: 1.2rem;
     color: var(--color-text);
-    opacity: 0.8;
-    max-width: 800px;
+    opacity: 0.88;
+    max-width: 42rem;
     margin: 0 auto;
+    text-align: center;
+    text-wrap: balance;
+    line-height: 1.65;
+  }
+
+  .contact-map-snippet {
+    margin-top: 28px;
+    width: 100%;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-map-iframe {
+    display: block;
+    width: 100%;
+    height: 220px;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .map-plus-code {
+    margin: 10px 0 4px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-heading);
+    opacity: 0.75;
+    text-align: center;
+  }
+
+  .map-attribution {
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: var(--color-text);
+    opacity: 0.7;
+    text-align: center;
+  }
+
+  .map-attribution a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .grid-layout {

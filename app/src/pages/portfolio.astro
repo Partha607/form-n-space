@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import FlipbookGallery from '../components/FlipbookGallery.astro';
 import rawProjects from '../data/portfolio-projects.json';
 
 type PortfolioProject = {
@@ -24,12 +23,6 @@ const projects = (rawProjects as PortfolioProject[]).map((project) => ({
   link: `/portfolio/${project.slug}`
 }));
 
-const featuredFlipbookImages = (rawProjects as PortfolioProject[])
-  .slice(0, 6)
-  .map((project) => ({
-    src: project.thumbnail,
-    alt: `${project.title} - ${project.location}`
-  }));
 ---
 
 <Layout title="Portfolio">
@@ -41,17 +34,6 @@ const featuredFlipbookImages = (rawProjects as PortfolioProject[])
       <h1>Selected Work Across the North East</h1>
       <p class="subtitle">A portfolio of residential, commercial, interior, and planning projects crafted for real context, long-term durability, and spatial clarity.</p>
     </div>
-  </section>
-
-  <section class="section bg-alt">
-    <div class="container">
-      <div class="portfolio-flipbook-intro text-center">
-        <span class="eyebrow">Portfolio Preview</span>
-        <h2 class="section-title">Flip Through Featured Projects</h2>
-        <p class="subtitle">A quick visual pass through selected work before you explore the full project grid.</p>
-      </div>
-    </div>
-    <FlipbookGallery images={featuredFlipbookImages} />
   </section>
 
   <section class="section bg-alt portfolio-list-section">
@@ -101,18 +83,8 @@ const featuredFlipbookImages = (rawProjects as PortfolioProject[])
     background-color: var(--color-bg-soft);
   }
 
-  .portfolio-flipbook-intro {
-    max-width: 780px;
-    margin: 0 auto 14px;
-  }
-
-  .portfolio-flipbook-intro .subtitle {
-    text-align: center;
-    margin: 0 auto;
-  }
-
   .portfolio-list-section {
-    padding-top: 68px;
+    padding-top: 48px;
   }
 
   .filter-group {

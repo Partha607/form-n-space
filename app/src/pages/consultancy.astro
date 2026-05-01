@@ -17,6 +17,7 @@ const galleryImages = [
 <Layout title="Architectural Design & Consultancy">
   <Header />
 
+  <div class="consultancy-page">
   <!-- HERO SECTION -->
   <section class="page-hero editorial-section bg-offwhite">
     <div class="container text-center">
@@ -44,9 +45,9 @@ const galleryImages = [
 
   <!-- WHAT WE DO & OUR APPROACH -->
   <section class="section editorial-section bg-alt">
-    <div class="container grid-layout">
-      <div>
-        <h2 class="section-title text-left">What We Do</h2>
+    <div class="container single-col-prose">
+      <div class="stack-block">
+        <h2 class="section-title block-title">What We Do</h2>
         <div class="list-item">
           <h4 class="text-accent">Concept Design & Planning</h4>
           <p>We translate your requirements into clear design concepts that define layout, form, and spatial flow.</p>
@@ -69,8 +70,8 @@ const galleryImages = [
         </div>
       </div>
 
-      <div>
-        <h2 class="section-title text-left">Our Approach</h2>
+      <div class="stack-block stack-block-spaced">
+        <h2 class="section-title block-title">Our Approach</h2>
         <div class="step-list">
           <div class="step-item">
             <span class="step-num">01</span>
@@ -118,7 +119,7 @@ const galleryImages = [
         <div class="challenge-item thin-border">Sloped and uneven land conditions</div>
         <div class="challenge-item thin-border">Limited access to certain materials</div>
       </div>
-      <p class="challenge-outro">Our designs are developed to perform effectively under these conditions.</p>
+      <p class="challenge-outro accent-line">Our designs are developed to perform effectively under these conditions.</p>
     </div>
   </section>
 
@@ -131,10 +132,26 @@ const galleryImages = [
     </div>
   </section>
 
+  </div>
+
   <Footer />
 </Layout>
 
 <style>
+  .consultancy-page :global(.flipbook-outer) {
+    padding: 36px 0 44px;
+  }
+
+  .consultancy-page :global(.section.editorial-section) {
+    padding-top: clamp(40px, 5vw, 68px);
+    padding-bottom: clamp(40px, 5vw, 68px);
+  }
+
+  .consultancy-page .page-hero.editorial-section {
+    padding-top: clamp(120px, 14vw, 160px);
+    padding-bottom: clamp(56px, 7vw, 88px);
+  }
+
   .page-hero {
     padding: 180px 0 100px;
   }
@@ -143,13 +160,13 @@ const galleryImages = [
     background-color: #f3efe8;
     color: var(--color-heading);
   }
-  
+
   .page-hero h1 {
     font-size: 4rem;
     color: inherit;
     margin-bottom: 20px;
   }
-  
+
   .page-hero .subtitle {
     font-size: 1.2rem;
     color: inherit;
@@ -159,41 +176,54 @@ const galleryImages = [
   }
 
   .intro-text {
-    max-width: 800px;
+    max-width: 42rem;
     margin: 0 auto;
-    font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+    font-size: clamp(1.05rem, 1.25vw, 1.28rem);
     font-family: var(--font-heading);
-    line-height: 1.75;
+    line-height: 1.72;
+    text-align: center;
   }
 
-  .grid-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+  .single-col-prose {
+    max-width: 40rem;
+    margin: 0 auto;
   }
 
-  .text-left {
-    text-align: left;
-    margin-bottom: 40px;
+  .block-title {
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .stack-block-spaced {
+    margin-top: 2.25rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(194, 168, 120, 0.35);
   }
 
   .list-item {
-    margin-bottom: 26px;
+    margin-bottom: 1.1rem;
     border-bottom: 1px solid rgba(194, 168, 120, 0.25);
-    padding-bottom: 16px;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+
+  .list-item p {
+    margin: 0;
+    line-height: 1.65;
+    font-size: 1.02rem;
   }
 
   .list-item h4 {
     font-family: var(--font-body);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.45rem;
   }
 
   .step-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
   .step-item {
@@ -201,58 +231,80 @@ const galleryImages = [
     gap: 14px;
     border: 1px solid rgba(194, 168, 120, 0.35);
     background: var(--color-surface);
-    padding: 18px;
-    min-height: 140px;
+    padding: 16px 18px;
+    min-height: 0;
+    text-align: left;
+    align-items: flex-start;
   }
 
   .step-num {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 1.65rem;
     color: var(--color-accent);
     line-height: 1;
     opacity: 0.5;
+    flex-shrink: 0;
   }
 
   .step-item h4 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+    font-size: 1.08rem;
+    margin-bottom: 0.35rem;
     color: var(--color-heading);
+  }
+
+  .step-item p {
+    margin: 0;
+    line-height: 1.58;
+    font-size: 0.98rem;
   }
 
   .challenge-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    max-width: 900px;
+    gap: 12px 14px;
+    max-width: 40rem;
     margin: 0 auto;
   }
 
   .challenge-item {
-    padding: 15px 25px;
+    padding: 12px 18px;
     background: var(--color-surface);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
+    text-align: center;
   }
 
   .challenge-title {
-    max-width: 800px;
-    margin: 0 auto 30px;
+    max-width: 38rem;
+    margin: 0 auto 1.1rem;
+    text-align: center;
+    text-wrap: balance;
   }
 
   .challenge-intro {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto 40px;
+    font-size: 1.05rem;
+    max-width: 36rem;
+    margin: 0 auto 1.35rem;
     text-align: center;
+    line-height: 1.65;
   }
 
   .challenge-outro {
-    font-size: 1.2rem;
-    margin-top: 40px;
+    font-size: 1.12rem;
+    margin-top: 1.5rem;
     color: var(--color-accent);
-    text-align: center;
     font-weight: 600;
+  }
+
+  .accent-line {
+    display: block;
+    width: 100%;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 1.55;
   }
 
   .cta-section p {
@@ -265,8 +317,8 @@ const galleryImages = [
   }
 
   @media (max-width: 768px) {
-    .page-hero h1 { font-size: 2.5rem; }
-    .grid-layout { grid-template-columns: 1fr; gap: 50px; }
-    .step-list { grid-template-columns: 1fr; }
+    .page-hero h1 {
+      font-size: 2.5rem;
+    }
   }
 </style>

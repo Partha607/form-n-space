@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import ProjectPhotoGallery from '../../components/ProjectPhotoGallery.astro';
 import projects from '../../data/portfolio-projects.json';
 
 type Project = {
@@ -23,6 +24,11 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+
+const galleryImages = (project.images ?? []).map((src: string, index: number) => ({
+  src,
+  alt: `${project.title} — view ${index + 1}`
+}));
 ---
 
 <Layout title={project.title}>
@@ -54,11 +60,7 @@ const { project } = Astro.props;
       </aside>
 
       <div class="project-gallery">
-        {project.images?.map((img: string, index: number) => (
-          <figure class="gallery-item">
-            <img src={img} alt={`${project.title} image ${index + 1}`} loading="lazy" />
-          </figure>
-        ))}
+        <ProjectPhotoGallery images={galleryImages} />
       </div>
     </div>
   </section>
@@ -148,23 +150,8 @@ const { project } = Astro.props;
   }
 
   .project-gallery {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .gallery-item {
-    margin: 0;
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-    overflow: hidden;
-  }
-
-  .gallery-item img {
-    display: block;
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    min-width: 0;
   }
 
   @media (max-width: 1024px) {

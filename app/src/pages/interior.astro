@@ -41,9 +41,9 @@ const images = [
 
   <!-- OVERVIEW & WHAT WE DO -->
   <section class="section editorial-section bg-alt">
-    <div class="container grid-layout">
+    <div class="container single-col-prose">
       <div class="content-block">
-        <h2 class="section-title text-left">Overview</h2>
+        <h2 class="section-title block-title">Overview</h2>
         <p class="overview-text">
           Interior design is not just about appearance: it is about how a space feels and functions every day.
           At Form & Space Architects, we design interiors that are practical, durable, and aligned with the way people live and work in the North East.
@@ -51,8 +51,8 @@ const images = [
         </p>
       </div>
 
-      <div>
-        <h2 class="section-title text-left">What We Do</h2>
+      <div class="stack-after">
+        <h2 class="section-title block-title">What We Do</h2>
         <div class="do-list">
           <div class="do-item thin-border">
             <h4 class="text-accent">Residential Interior Design</h4>
@@ -81,9 +81,9 @@ const images = [
 
   <!-- APPROACH AND PHILOSOPHY -->
   <section class="section editorial-section">
-    <div class="container grid-layout">
+    <div class="container single-col-prose">
       <div>
-        <h2 class="section-title text-left">Our Approach</h2>
+        <h2 class="section-title block-title">Our Approach</h2>
         <ul class="clean-list">
           <li><strong>Understanding Lifestyle:</strong> We begin by understanding how you use your space daily.</li>
           <li><strong>Design Development:</strong> Layouts, materials, and concepts are developed based on needs and budget.</li>
@@ -92,8 +92,8 @@ const images = [
         </ul>
       </div>
 
-      <div>
-        <h2 class="section-title text-left">Design Philosophy</h2>
+      <div class="stack-after">
+        <h2 class="section-title block-title">Design Philosophy</h2>
         <ul class="clean-list">
           <li><strong>Functional First:</strong> Every element must serve a purpose.</li>
           <li><strong>Minimal & Timeless:</strong> Avoiding unnecessary design complexity.</li>
@@ -134,20 +134,26 @@ const images = [
     text-align: center;
   }
 
-  .grid-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+  .single-col-prose {
+    max-width: 40rem;
+    margin: 0 auto;
   }
 
-  .text-left {
-    text-align: left;
-    margin-bottom: 30px;
+  .block-title {
+    text-align: center;
+    margin-bottom: 1.1rem;
+  }
+
+  .stack-after {
+    margin-top: 2.25rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(194, 168, 120, 0.35);
   }
 
   .overview-text {
     font-size: clamp(1.04rem, 1.2vw, 1.18rem);
     line-height: 1.85;
+    text-align: center;
   }
 
   .do-list {
@@ -159,25 +165,36 @@ const images = [
   .do-item {
     padding: 20px;
     background-color: var(--color-surface);
+    text-align: center;
+  }
+
+  .do-item p {
+    margin: 0;
+    line-height: 1.62;
   }
 
   .do-item h4 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
     font-family: var(--font-body);
     text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   .clean-list {
     list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .clean-list li {
-    padding: 16px 18px;
+    padding: 14px 16px;
     border: 1px solid rgba(194, 168, 120, 0.3);
-    font-size: 1.1rem;
-    margin-bottom: 12px;
+    font-size: 1.02rem;
+    margin-bottom: 10px;
     background: color-mix(in srgb, var(--color-surface) 90%, white);
+    line-height: 1.58;
+    text-align: center;
   }
 
   .clean-list strong {
@@ -196,7 +213,4 @@ const images = [
     max-width: 700px;
   }
 
-  @media (max-width: 768px) {
-    .grid-layout { grid-template-columns: 1fr; gap: 50px; }
-  }
 </style>

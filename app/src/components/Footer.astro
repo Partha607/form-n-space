@@ -4,31 +4,31 @@ import logo from '../assets/logo.png';
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div class="footer-col">
+    <div class="footer-col footer-brand">
       <div class="footer-logo">
         <img src={logo.src} alt="Form & Space Architects" class="logo" />
       </div>
       <h3>Form & Space Architects</h3>
       <p>Designing spaces that belong to the North East. Rooted in Imphal, expanding across Assam, Meghalaya, and Nagaland.</p>
     </div>
-    
-    <div class="footer-col">
+
+    <div class="footer-col footer-office">
       <h4>Head Office</h4>
-      <p>Yaiskul Moirangkhom<br/>
-      Opposite Shyamasakhi School, 2nd Floor<br/>
-      Imphal, Manipur</p>
+      <p>Yaiskul Moirangkhom<br />
+        Opposite Shyamasakhi School, 2nd Floor<br />
+        Imphal, Manipur</p>
     </div>
 
-    <div class="footer-col">
+    <div class="footer-col footer-office">
       <h4>Expansion Office</h4>
-      <p>Guwahati, Assam<br/>
-      (Coming Soon!)</p>
+      <p>Guwahati, Assam<br />
+        (Coming Soon!)</p>
     </div>
 
-    <div class="footer-col">
+    <div class="footer-col footer-office">
       <h4>Contact Us</h4>
-      <p>+91 98622 82193<br/>
-      +91 70056 08046</p>
+      <p>+91 98622 82193<br />
+        +91 70056 08046</p>
       <p><a href="mailto:formandspace.arch@gmail.com">formandspace.arch@gmail.com</a></p>
     </div>
   </div>
@@ -41,76 +41,115 @@ import logo from '../assets/logo.png';
 
 <style>
   .footer {
-    background-color: #f3efe8;
-    color: var(--color-text);
-    padding-top: 80px;
-    border-top: 2px solid var(--color-accent);
+    background-color: #7a7f85;
+    color: #e8e6df;
+    padding-top: 72px;
+    border-top: 1px solid rgba(232, 230, 223, 0.25);
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 60px;
+    grid-template-columns: minmax(200px, 1.35fr) repeat(3, minmax(0, 1fr));
+    gap: clamp(28px, 4vw, 48px);
+    padding-bottom: 56px;
     align-items: start;
   }
 
+  .footer-brand {
+    padding-right: clamp(0px, 2vw, 16px);
+  }
+
+  .footer-office h4 {
+    min-height: 2.75rem;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(232, 230, 223, 0.35);
+  }
+
+  .footer-office p {
+    margin: 0 0 0.65rem;
+    line-height: 1.65;
+  }
+
   .footer-logo {
-    margin-bottom: 25px;
+    margin-bottom: 22px;
   }
 
   .footer-logo .logo {
-    height: 64px;
+    height: 60px;
     width: auto;
     display: block;
+    opacity: 0.98;
   }
 
   .footer h3 {
-    color: var(--color-heading);
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+    color: #e8e6df;
+    margin-bottom: 16px;
+    font-size: 1.45rem;
+    letter-spacing: 0.02em;
   }
 
   .footer h4 {
-    color: var(--color-heading);
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+    color: #f0ede4;
+    margin: 0;
+    font-size: 0.82rem;
     font-family: var(--font-body);
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
   }
 
-  .footer p {
-    color: var(--color-text);
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-    opacity: 0.85;
+  .footer-brand p,
+  .footer-office p {
+    color: #e8e6df;
+    font-size: 0.94rem;
+    opacity: 0.92;
   }
 
   .footer a {
-    color: var(--color-accent);
-    transition: color 0.3s;
+    color: #d8d4c8;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
   }
 
   .footer a:hover {
-    color: var(--color-heading);
+    color: #ffffff;
   }
 
   .footer-bottom {
-    border-top: 1px solid rgba(194, 168, 120, 0.4);
-    padding: 20px 0;
+    border-top: 1px solid rgba(232, 230, 223, 0.22);
+    padding: 18px 0 22px;
     text-align: center;
   }
 
   .footer-bottom p {
     margin: 0;
-    font-size: 0.85rem;
-    color: var(--color-text);
-    opacity: 0.6;
+    font-size: 0.82rem;
+    color: #e8e6df;
+    opacity: 0.75;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
     .footer-grid {
       grid-template-columns: 1fr;
+    }
+
+    .footer-office h4 {
+      min-height: 0;
     }
   }
 </style>

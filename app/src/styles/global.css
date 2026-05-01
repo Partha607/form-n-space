@@ -284,3 +284,45 @@ a {
     scroll-behavior: auto !important;
   }
 }
+
+/* ─── Old Money ornamental fills (hero letterbox, flipbook, etc.) ─── */
+.old-money-fill {
+  background-color: #2a2c2e;
+  background-image:
+    radial-gradient(ellipse 130% 85% at 50% -15%, rgba(201, 176, 127, 0.2), transparent 58%),
+    radial-gradient(ellipse 75% 90% at 0% 105%, rgba(72, 52, 54, 0.42), transparent 56%),
+    radial-gradient(ellipse 75% 90% at 100% -5%, rgba(90, 98, 96, 0.45), transparent 56%),
+    repeating-linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.022) 0 0.5px,
+      transparent 0.5px 16px
+    ),
+    repeating-linear-gradient(
+      -62deg,
+      transparent 0,
+      transparent 26px,
+      rgba(194, 168, 120, 0.05) 26px,
+      rgba(194, 168, 120, 0.05) 27px
+    ),
+    linear-gradient(168deg, #232528 0%, #2e3234 28%, #2a2628 52%, #252a2a 76%, #1c1e20 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.old-money-fill-soft {
+  background-color: #e9e2d6;
+  background-image:
+    radial-gradient(ellipse 120% 70% at 50% 0%, rgba(194, 168, 120, 0.28), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 0% 100%, rgba(90, 96, 94, 0.12), transparent 50%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(120, 108, 102, 0.1), transparent 50%),
+    repeating-linear-gradient(
+      118deg,
+      rgba(90, 98, 96, 0.04) 0 0.5px,
+      transparent 0.5px 20px
+    ),
+    linear-gradient(178deg, #f3efe8 0%, #e8e0d2 38%, #ebe4d8 72%, #e5dccf 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -67,10 +67,9 @@ import Footer from '../components/Footer.astro';
 
   <!-- 3. OUR APPROACH -->
   <section class="section editorial-section approach-section section-muted">
-    <div class="container">
-      <h2 class="section-title">Our Approach</h2>
+    <div class="container approach-wrap">
+      <h2 class="section-title approach-heading">Our Approach</h2>
       <p class="text-center approach-intro">We do not believe in one-size-fits-all design. Every project begins with a clear understanding of:</p>
-      
       <ul class="approach-list">
         <li>The site and its terrain</li>
         <li>Climate conditions such as rainfall and humidity</li>
@@ -83,8 +82,8 @@ import Footer from '../components/Footer.astro';
 
   <!-- 4. DESIGN PHILOSOPHY -->
   <section class="section editorial-section philosophy-section">
-    <div class="container">
-      <h2 class="section-title">Design Philosophy</h2>
+    <div class="container content-prose">
+      <h2 class="section-title philosophy-heading">Design Philosophy</h2>
       <div class="grid-2">
         <div class="phil-item">
           <h4 class="text-accent">Context First</h4>
@@ -108,8 +107,8 @@ import Footer from '../components/Footer.astro';
 
   <!-- 6. WHAT MAKES US DIFFERENT -->
   <section class="section editorial-section diff-section section-muted">
-    <div class="container">
-      <h2 class="section-title">What Makes Us Different</h2>
+    <div class="container content-prose">
+      <h2 class="section-title diff-heading">What Makes Us Different</h2>
       <div class="grid-2">
         <div class="phil-item">
           <h4 class="text-accent">Regional Understanding</h4>
@@ -195,46 +194,54 @@ import Footer from '../components/Footer.astro';
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 24px;
   }
 
   .team-card {
-    padding: 30px;
+    padding: 1.35rem 1.25rem 1.5rem;
     text-align: center;
-    width: 250px;
-    min-height: 198px;
+    width: min(100%, 260px);
+    min-height: 0;
     background-color: var(--color-surface);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.65rem;
   }
 
   .team-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+    font-size: 1.05rem;
+    margin: 0;
     font-family: var(--font-heading);
-    min-height: 3.2em;
+    line-height: 1.35;
+    max-width: 20ch;
   }
 
   .role-group {
-    min-height: 52px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 0.35rem;
+    width: 100%;
   }
 
   .team-card .role {
     color: var(--color-text);
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.08em;
     font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
   }
 
   .team-card .sub-role {
     color: #777;
-    font-size: 0.8rem;
-    margin-top: 5px;
+    font-size: 0.78rem;
+    margin: 0;
+    line-height: 1.45;
+    max-width: 24ch;
   }
 
   .phil-item,
@@ -242,33 +249,83 @@ import Footer from '../components/Footer.astro';
     border-top: 2px solid rgba(194, 168, 120, 0.45);
   }
 
-  .approach-list {
-    max-width: 600px;
+  .approach-wrap {
+    max-width: 42rem;
     margin: 0 auto;
+  }
+
+  .approach-heading,
+  .philosophy-heading,
+  .diff-heading {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+
+  .approach-list {
+    margin: 0 auto 0.5rem;
+    padding: 0;
     list-style: none;
+    border: 1px solid rgba(194, 168, 120, 0.35);
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--color-surface);
   }
 
   .approach-list li {
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(194, 168, 120, 0.3);
-    font-size: 1.1rem;
+    padding: 0.85rem 1.15rem;
+    border-bottom: 1px solid rgba(194, 168, 120, 0.22);
+    font-size: 1.05rem;
     text-align: center;
+    line-height: 1.55;
   }
 
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
-    max-width: 900px;
+  .approach-list li:last-child {
+    border-bottom: 0;
+  }
+
+  .approach-intro {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+  }
+
+  .approach-outro {
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+    line-height: 1.65;
+  }
+
+  .content-prose {
+    max-width: 40rem;
     margin: 0 auto;
   }
 
+  .grid-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    max-width: none;
+    margin: 0;
+  }
+
+  .phil-item {
+    padding: 1.1rem 0 0;
+    text-align: center;
+  }
+
+  .phil-item p {
+    margin: 0.5rem 0 0;
+    line-height: 1.65;
+    font-size: 1.02rem;
+  }
+
   .phil-item h4 {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
+    font-size: 1.15rem;
+    margin: 0;
     font-family: var(--font-body);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.06em;
   }
 
   .vision-mission {
@@ -285,15 +342,6 @@ import Footer from '../components/Footer.astro';
     background: var(--color-surface);
   }
 
-  .approach-intro {
-    max-width: 700px;
-    margin: 0 auto 40px;
-  }
-
-  .approach-outro {
-    margin-top: 30px;
-  }
-
   .cta-link {
     margin-top: 30px;
   }
@@ -305,6 +353,6 @@ import Footer from '../components/Footer.astro';
 
   @media (max-width: 768px) {
     .page-hero h1 { font-size: 2.5rem; }
-    .grid-2, .vision-mission { grid-template-columns: 1fr; flex-direction: column; }
+    .vision-mission { flex-direction: column; }
   }
 </style>
