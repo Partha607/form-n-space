@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FlipbookGallery from '../components/FlipbookGallery.astro';
+import { withBase } from '../utils/withBase';
 
 import i1 from '../assets/interior-Page-1-Cover.png';
 import i2 from '../assets/interior-Page-2-Philosophy.png';
@@ -33,7 +34,7 @@ const images = [
     <div class="container text-center hero-headline-wrap">
       <h1 class="hero-title">Interiors Designed for Real Living</h1>
       <p class="hero-subtitle">Functional, refined, and built for the climate and lifestyle of North East India.</p>
-      <a href="/contact" class="btn btn-primary">Plan Your Interior</a>
+      <a href={withBase('contact')} class="btn btn-primary">Plan Your Interior</a>
     </div>
     
     <FlipbookGallery images={images} />
@@ -109,7 +110,7 @@ const images = [
     <div class="container">
       <h2>Looking to design or upgrade your space?</h2>
       <p>Let’s create something that works for you.</p>
-      <a href="/contact" class="btn btn-primary cta-link">Start Your Interior Project</a>
+      <a href={withBase('contact')} class="btn btn-primary cta-link">Start Your Interior Project</a>
     </div>
   </section>
 

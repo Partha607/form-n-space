@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { withBase } from '../utils/withBase';
 ---
 
 <Layout title="Welcome">
   <main class="splash-container">
     <!-- Architecture Card -->
-    <a href="/architecture" class="splash-card splash-architecture">
+    <a href={withBase('architecture')} class="splash-card splash-architecture">
       <div class="card-bg"></div>
       <div class="card-content">
         <h2>Architecture</h2>

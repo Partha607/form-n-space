@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ProjectPhotoGallery from '../../components/ProjectPhotoGallery.astro';
 import projects from '../../data/portfolio-projects.json';
+import { withBase } from '../../utils/withBase';
 
 type Project = {
   slug: string;
@@ -36,7 +37,7 @@ const galleryImages = (project.images ?? []).map((src: string, index: number) =>
 
   <section class="project-hero">
     <div class="container">
-      <a href="/portfolio" class="back-link">← Back to Portfolio</a>
+      <a href={withBase('portfolio')} class="back-link">← Back to Portfolio</a>
       <h1>{project.title}</h1>
       <p class="subtitle">{project.location}{project.area ? ` • ${project.area}` : ''}</p>
     </div>

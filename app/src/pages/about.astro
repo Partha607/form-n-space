@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { withBase } from '../utils/withBase';
 ---
 
 <Layout title="About Us">
@@ -150,7 +151,7 @@ import Footer from '../components/Footer.astro';
   <section class="section editorial-section cta-section text-center bg-alt">
     <div class="container">
       <h2>Start your project with a team that understands the region.</h2>
-      <a href="/contact" class="btn btn-primary cta-link">Get in Touch</a>
+      <a href={withBase('contact')} class="btn btn-primary cta-link">Get in Touch</a>
     </div>
   </section>
 

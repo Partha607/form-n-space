@@ -1,4 +1,12 @@
 ---
+import { withBase } from '../utils/withBase';
+
+function internalHref(link: string | undefined): string {
+  if (!link || link === '#') return '#';
+  if (/^(https?:|mailto:|tel:)/i.test(link)) return link;
+  return withBase(link);
+}
+
 export interface Props {
   title: string;
   subtitle: string;
@@ -20,8 +28,8 @@ const { title, subtitle, imageSrc, primaryAction, primaryLink, secondaryAction, 
     <p class="hero-subtitle">{subtitle}</p>
     {(primaryAction || secondaryAction) && (
       <div class="hero-actions">
-        {primaryAction && <a href={primaryLink || "#"} class="btn btn-primary">{primaryAction}</a>}
-        {secondaryAction && <a href={secondaryLink || "#"} class="btn">{secondaryAction}</a>}
+        {primaryAction && <a href={internalHref(primaryLink)} class="btn btn-primary">{primaryAction}</a>}
+        {secondaryAction && <a href={internalHref(secondaryLink)} class="btn">{secondaryAction}</a>}
       </div>
     )}
   </div>

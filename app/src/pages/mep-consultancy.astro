@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
+import { withBase } from '../utils/withBase';
 
 import mepBg from '../assets/MEP.png';
 import mepOverviewImg from '../assets/MEP_1.png';
@@ -21,7 +22,7 @@ import mepOverviewImg from '../assets/MEP_1.png';
         <div class="hero-text">
           <h1>Engineering Systems That Make Buildings Work</h1>
           <p class="subtitle">Reliable mechanical, electrical, and plumbing solutions designed for the conditions of North East India.</p>
-          <a href="/contact" class="btn btn-primary hero-cta">Consult Our Experts</a>
+          <a href={withBase('contact')} class="btn btn-primary hero-cta">Consult Our Experts</a>
         </div>
       </div>
       <div class="slide-overlay"></div>
@@ -111,7 +112,7 @@ import mepOverviewImg from '../assets/MEP_1.png';
     <div class="container">
       <h2>Building or planning a project?</h2>
       <p>Ensure the systems are designed right from the beginning.</p>
-      <a href="/contact" class="btn btn-primary hero-cta">Get MEP Consultation</a>
+      <a href={withBase('contact')} class="btn btn-primary hero-cta">Get MEP Consultation</a>
     </div>
   </section>
 

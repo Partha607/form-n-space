@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
+import { withBase } from '../utils/withBase';
 
 import hero1 from '../assets/hero/IMG-0148.jpg';
 import hero2 from '../assets/hero/hvs-patsoi-1.jpg';
@@ -117,7 +118,7 @@ const heroSlides = [
     <div class="container">
       <h2>Have a project in mind?</h2>
       <p>Let’s design something that works for your land, your needs, and your environment.</p>
-      <a href="/contact" class="btn btn-primary cta-link">Get in Touch</a>
+      <a href={withBase('contact')} class="btn btn-primary cta-link">Get in Touch</a>
     </div>
   </section>
 

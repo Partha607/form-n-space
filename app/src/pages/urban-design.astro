@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import HeroParallax from '../components/HeroParallax.astro';
 import { Image } from 'astro:assets';
+import { withBase } from '../utils/withBase';
 import topImg from '../assets/Urban-design-01-Top.png';
 import bottomImg from '../assets/Urban-design-02.png';
 ---
@@ -105,7 +106,7 @@ import bottomImg from '../assets/Urban-design-02.png';
     <div class="container">
       <h2>Planning a large-scale project?</h2>
       <p>Let’s design it with clarity from the start.</p>
-      <a href="/contact" class="btn btn-primary cta-link">Discuss Your Urban Project</a>
+      <a href={withBase('contact')} class="btn btn-primary cta-link">Discuss Your Urban Project</a>
     </div>
   </section>
 

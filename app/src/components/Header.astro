@@ -1,5 +1,6 @@
 ---
 import logo from '../assets/logo.png';
+import { withBase } from '../utils/withBase';
 
 export interface Props {
   revealOnScroll?: boolean;
@@ -10,20 +11,20 @@ const { revealOnScroll = false } = Astro.props;
 
 <header class={`header ${revealOnScroll ? 'hidden-init' : ''}`} id="site-header">
   <div class="container header-inner">
-    <a href="/" class="logo-link">
+    <a href={withBase('')} class="logo-link">
       <img src={logo.src} alt="Form & Space Architects" class="logo" />
     </a>
 
     <!-- Desktop nav -->
     <nav class="nav" id="desktop-nav">
-      <a href="/architecture">Architecture</a>
-      <a href="/about">About</a>
-      <a href="/consultancy">Consultancy</a>
-      <a href="/interior">Interior</a>
-      <a href="/urban-design">Urban Design</a>
-      <a href="/mep-consultancy">MEP</a>
-      <a href="/portfolio">Portfolio</a>
-      <a href="/contact" class="btn btn-contact">Contact</a>
+      <a href={withBase('architecture')}>Architecture</a>
+      <a href={withBase('about')}>About</a>
+      <a href={withBase('consultancy')}>Consultancy</a>
+      <a href={withBase('interior')}>Interior</a>
+      <a href={withBase('urban-design')}>Urban Design</a>
+      <a href={withBase('mep-consultancy')}>MEP</a>
+      <a href={withBase('portfolio')}>Portfolio</a>
+      <a href={withBase('contact')} class="btn btn-contact">Contact</a>
     </nav>
 
     <!-- Hamburger button (mobile only) -->
@@ -39,14 +40,14 @@ const { revealOnScroll = false } = Astro.props;
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <button class="mobile-close" id="mobile-close-btn" aria-label="Close menu">&#x2715;</button>
   <nav class="mobile-nav">
-    <a href="/architecture">Architecture</a>
-    <a href="/about">About</a>
-    <a href="/consultancy">Consultancy</a>
-    <a href="/interior">Interior</a>
-    <a href="/urban-design">Urban Design</a>
-    <a href="/mep-consultancy">MEP</a>
-    <a href="/portfolio">Portfolio</a>
-    <a href="/contact" class="mobile-cta">Contact</a>
+    <a href={withBase('architecture')}>Architecture</a>
+    <a href={withBase('about')}>About</a>
+    <a href={withBase('consultancy')}>Consultancy</a>
+    <a href={withBase('interior')}>Interior</a>
+    <a href={withBase('urban-design')}>Urban Design</a>
+    <a href={withBase('mep-consultancy')}>MEP</a>
+    <a href={withBase('portfolio')}>Portfolio</a>
+    <a href={withBase('contact')} class="mobile-cta">Contact</a>
   </nav>
 </div>
 <!-- Overlay backdrop -->

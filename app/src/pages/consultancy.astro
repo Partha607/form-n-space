@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FlipbookGallery from '../components/FlipbookGallery.astro';
+import { withBase } from '../utils/withBase';
 import con1 from '../assets/Consultancy-services-01.png';
 import con2 from '../assets/Consultancy-services-02.png';
 import con3 from '../assets/Consultancy-services-03.png';
@@ -23,7 +24,7 @@ const galleryImages = [
     <div class="container text-center">
       <h1>Architecture That Responds<br/>to Its Environment</h1>
       <p class="subtitle">Designing buildings that are functional, climate-responsive, and built for long-term performance in North East India.</p>
-      <a href="/contact" class="btn btn-primary hero-cta">Discuss Your Project</a>
+      <a href={withBase('contact')} class="btn btn-primary hero-cta">Discuss Your Project</a>
     </div>
   </section>
 
@@ -128,7 +129,7 @@ const galleryImages = [
     <div class="container">
       <h2>Planning a new building?</h2>
       <p>Let’s design it right from the start.</p>
-      <a href="/contact" class="btn btn-primary hero-cta">Start Your Architectural Project</a>
+      <a href={withBase('contact')} class="btn btn-primary hero-cta">Start Your Architectural Project</a>
     </div>
   </section>
 
