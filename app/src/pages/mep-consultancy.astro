@@ -18,6 +18,30 @@ import mepOverviewImg from '../assets/MEP_1.png';
       class="mep-hero-bg old-money-hero-stack"
       style={`--mep-hero-img: url(${mepBg.src})`}
     >
+      <div class="mep-hero-side mep-hero-side--left" aria-hidden="true">
+        <div class="mep-discipline">
+          <svg class="mep-icon mep-icon--mech" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="24" r="5" />
+            <path d="M24 9v6M24 33v6M9 24h6M33 24h6M14.1 14.1l4.2 4.2M29.7 29.7l4.2 4.2M14.1 33.9l4.2-4.2M29.7 18.3l4.2-4.2" />
+          </svg>
+          <span class="mep-label">Mechanical</span>
+        </div>
+        <div class="mep-discipline">
+          <svg class="mep-icon mep-icon--elec" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 8L12 26h10l-4 14 16-22H24l4-10z" />
+          </svg>
+          <span class="mep-label">Electrical</span>
+        </div>
+      </div>
+      <div class="mep-hero-side mep-hero-side--right" aria-hidden="true">
+        <div class="mep-discipline">
+          <svg class="mep-icon mep-icon--plumb" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 8c-4 4-8 10-8 18a8 8 0 0016 0c0-8-4-14-8-18z" />
+            <path d="M24 34v6" />
+          </svg>
+          <span class="mep-label">Plumbing</span>
+        </div>
+      </div>
       <div class="container hero-content">
         <div class="hero-text">
           <h1>Engineering Systems That Make Buildings Work</h1>
@@ -126,6 +150,75 @@ import mepOverviewImg from '../assets/MEP_1.png';
   }
 
   /* Photo on top (contain); letterbox = ornamental stack on #9BA7A0 sage (no green cast) */
+  /* Letterbox-side discipline cues (align with triptych M/E/P story) */
+  .mep-hero-side {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+    width: min(120px, 14vw);
+    pointer-events: none;
+    padding: clamp(10px, 2vw, 16px);
+    background: linear-gradient(
+      165deg,
+      rgba(38, 40, 42, 0.55) 0%,
+      rgba(38, 40, 42, 0.22) 55%,
+      transparent 100%
+    );
+    border: 1px solid rgba(194, 168, 120, 0.28);
+    border-radius: 4px;
+    backdrop-filter: blur(6px);
+  }
+
+  .mep-hero-side--left {
+    left: clamp(10px, 3.5vw, 32px);
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .mep-hero-side--right {
+    right: clamp(10px, 3.5vw, 32px);
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .mep-discipline {
+    display: flex;
+    flex-direction: column;
+    align-items: inherit;
+    gap: 6px;
+  }
+
+  .mep-icon {
+    flex-shrink: 0;
+    opacity: 0.95;
+  }
+
+  .mep-icon--mech {
+    color: #8fa89a;
+  }
+
+  .mep-icon--elec {
+    color: #c9a86c;
+  }
+
+  .mep-icon--plumb {
+    color: #7a9eb5;
+  }
+
+  .mep-label {
+    font-family: var(--font-heading);
+    font-size: clamp(0.58rem, 1.1vw, 0.72rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.88);
+    line-height: 1.25;
+    max-width: 11em;
+  }
+
   .mep-hero-bg.old-money-hero-stack {
     min-height: 100vh;
     min-height: 100dvh;
@@ -344,6 +437,29 @@ import mepOverviewImg from '../assets/MEP_1.png';
   @media (max-width: 900px) {
     .hero-content {
       align-items: end;
+    }
+
+    .mep-hero-side {
+      top: auto;
+      bottom: clamp(72px, 18vh, 120px);
+      transform: none;
+      width: min(100px, 22vw);
+      gap: 0.75rem;
+      padding: 8px 10px;
+    }
+
+    .mep-hero-side--left {
+      left: clamp(8px, 3vw, 16px);
+    }
+
+    .mep-hero-side--right {
+      right: clamp(8px, 3vw, 16px);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .mep-hero-side {
+      display: none;
     }
   }
 </style>

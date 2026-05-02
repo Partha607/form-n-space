@@ -14,7 +14,7 @@ const total = images.length;
     <!-- Stack of pages — rendered back-to-front -->
     {images.map((img, i) => (
       <div class="page" data-page={i} data-caption={img.alt}>
-        <div class="page-front">
+        <div class="page-front old-money-fill">
           <img src={img.src} alt={img.alt} class="page-img" />
           <div class="page-overlay"></div>
         </div>
@@ -104,7 +104,7 @@ const total = images.length;
 
   .page-front {
     z-index: 2;
-    background: transparent;
+    /* old-money-fill on element — matches scene when PNG has transparent side gutters */
     border: 1px solid rgba(194, 168, 120, 0.3);
     display: flex;
     align-items: center;
@@ -203,6 +203,7 @@ const total = images.length;
     const total = pages.length;
     const maxIndex = Math.max(0, total - 1);
     let current = 0;
+    let transitionToken = 0;
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function updateUI(index: number) {
@@ -210,17 +211,38 @@ const total = images.length;
       if (caption) caption.textContent = pages[index].dataset.caption || '';
     }
 
+    /** Steady state: visible page (activeIndex) is on top; flipped pages stay low. */
     function applyStacking(activeIndex: number) {
       pages.forEach((page, i) => {
         if (i < activeIndex) {
           page.style.zIndex = String(i + 1);
+        } else if (i === activeIndex) {
+          page.style.zIndex = String(100 + total);
         } else {
-          page.style.zIndex = String(total * 2 - i);
+          page.style.zIndex = String(100 + (total - i));
         }
       });
     }
 
-    function setFlipState(index: number) {
+    /**
+     * While flipping forward one page, the turning page must stay above the next page
+     * until the transform transition ends — otherwise the 3D flip is hidden underneath.
+     */
+    function applyStackingDuringForwardFlip(turningIndex: number, nextIndex: number) {
+      pages.forEach((page, i) => {
+        if (i === turningIndex) {
+          page.style.zIndex = String(500 + total);
+        } else if (i === nextIndex) {
+          page.style.zIndex = String(400 + total);
+        } else if (i < nextIndex) {
+          page.style.zIndex = String(i + 1);
+        } else {
+          page.style.zIndex = String(100 + (total - i));
+        }
+      });
+    }
+
+    function setFlipState(index: number, prevIndex: number) {
       pages.forEach((page, i) => {
         if (i < index) {
           page.classList.add('flipped');
@@ -228,7 +250,34 @@ const total = images.length;
           page.classList.remove('flipped');
         }
       });
-      applyStacking(index);
+
+      const singleStepForward = index === prevIndex + 1;
+
+      if (!prefersReduced && singleStepForward && index > 0) {
+        applyStackingDuringForwardFlip(prevIndex, index);
+        const turning = pages[prevIndex];
+        const token = ++transitionToken;
+        let settled = false;
+
+        const finish = () => {
+          if (settled || token !== transitionToken) return;
+          settled = true;
+          clearTimeout(fallbackId);
+          turning.removeEventListener('transitionend', onEnd);
+          applyStacking(index);
+        };
+
+        const onEnd = (e: TransitionEvent) => {
+          if (e.propertyName !== 'transform') return;
+          finish();
+        };
+
+        turning.addEventListener('transitionend', onEnd);
+        const fallbackId = window.setTimeout(finish, 1800);
+      } else {
+        applyStacking(index);
+      }
+
       updateUI(index);
     }
 
@@ -251,13 +300,14 @@ const total = images.length;
         onUpdate: (self) => {
           const index = Math.min(maxIndex, Math.max(0, Math.round(self.progress * maxIndex)));
           if (index !== current) {
+            const prev = current;
             current = index;
-            setFlipState(current);
+            setFlipState(current, prev);
           }
         }
       });
     }
 
-    setFlipState(0);
+    setFlipState(0, 0);
   });
 </script>
