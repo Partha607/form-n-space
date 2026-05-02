@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import rawProjects from '../data/portfolio-projects.json';
 import { withBase } from '../utils/withBase';
+import portfolioHeroBg from '../assets/backgrounds/portfolio_gradient.png';
 
 type PortfolioProject = {
   slug: string;
@@ -29,8 +30,11 @@ const projects = (rawProjects as PortfolioProject[]).map((project) => ({
 <Layout title="Portfolio">
   <Header />
 
-  <section class="page-hero text-center">
-    <div class="container">
+  <section
+    class="page-hero text-center portfolio-hero"
+    style={`--portfolio-hero-bg: url(${portfolioHeroBg.src})`}
+  >
+    <div class="container portfolio-hero-inner">
       <span class="eyebrow">Projects Portfolio</span>
       <h1>Selected Work Across the North East</h1>
       <p class="subtitle">A portfolio of residential, commercial, interior, and planning projects crafted for real context, long-term durability, and spatial clarity.</p>
@@ -61,20 +65,34 @@ const projects = (rawProjects as PortfolioProject[]).map((project) => ({
 </Layout>
 
 <style>
-  .page-hero {
+  .portfolio-hero {
+    position: relative;
+    isolation: isolate;
     padding: 190px 0 110px;
-    background: linear-gradient(180deg, #f4eee2 0%, #f5f1e8 100%);
+    background-color: #ebe6dc;
+    background-image:
+      linear-gradient(180deg, rgba(245, 241, 232, 0.55) 0%, rgba(245, 241, 232, 0.72) 100%),
+      linear-gradient(120deg, rgba(48, 52, 54, 0.06) 0%, transparent 42%),
+      var(--portfolio-hero-bg);
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+    background-repeat: no-repeat;
   }
 
-  .page-hero h1 {
+  .portfolio-hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .portfolio-hero h1 {
     margin-bottom: 20px;
     color: var(--color-heading);
     text-wrap: balance;
   }
 
-  .page-hero .subtitle {
+  .portfolio-hero .subtitle {
     font-size: 1.2rem;
-    opacity: 0.85;
+    opacity: 0.92;
     max-width: 800px;
     margin: 0 auto;
     color: var(--color-text);
@@ -127,7 +145,7 @@ const projects = (rawProjects as PortfolioProject[]).map((project) => ({
   }
 
   @media (max-width: 768px) {
-    .page-hero h1 { font-size: 2.5rem; }
+    .portfolio-hero h1 { font-size: 2.5rem; }
     .portfolio-grid { grid-template-columns: 1fr; }
   }
 </style>

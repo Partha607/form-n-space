@@ -7,6 +7,8 @@ import { withBase } from '../utils/withBase';
 import con1 from '../assets/Consultancy-services-01.png';
 import con2 from '../assets/Consultancy-services-02.png';
 import con3 from '../assets/Consultancy-services-03.png';
+import consultancyHeroBg from '../assets/backgrounds/footer.png';
+import consultancyFlipBg from '../assets/backgrounds/CONSULTANCY_GRADIENT.png';
 
 const galleryImages = [
   { src: con1.src, alt: "Consultancy Service 1" },
@@ -20,7 +22,10 @@ const galleryImages = [
 
   <div class="consultancy-page">
   <!-- HERO SECTION -->
-  <section class="page-hero editorial-section bg-offwhite">
+  <section
+    class="page-hero editorial-section consultancy-hero-art"
+    style={`--consultancy-hero-bg: url(${consultancyHeroBg.src})`}
+  >
     <div class="container text-center">
       <h1>Architecture That Responds<br/>to Its Environment</h1>
       <p class="subtitle">Designing buildings that are functional, climate-responsive, and built for long-term performance in North East India.</p>
@@ -42,10 +47,13 @@ const galleryImages = [
   </section>
 
   <!-- FLIPBOOK GALLERY -->
-  <FlipbookGallery images={galleryImages} />
+  <FlipbookGallery images={galleryImages} backgroundImage={consultancyFlipBg.src} />
 
-  <!-- WHAT WE DO & OUR APPROACH -->
-  <section class="section editorial-section bg-alt">
+  <!-- WHAT WE DO -->
+  <section
+    class="section editorial-section consultancy-what-we-do"
+    style={`--consultancy-section-bg: url(${consultancyFlipBg.src})`}
+  >
     <div class="container single-col-prose">
       <div class="stack-block">
         <h2 class="section-title block-title">What We Do</h2>
@@ -70,8 +78,13 @@ const galleryImages = [
           <p>Efficient use of land considering slope, access, drainage, and future expansion.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="stack-block stack-block-spaced">
+  <!-- OUR APPROACH -->
+  <section class="section editorial-section bg-alt">
+    <div class="container single-col-prose">
+      <div class="stack-block">
         <h2 class="section-title block-title">Our Approach</h2>
         <div class="step-list">
           <div class="step-item">
@@ -153,25 +166,52 @@ const galleryImages = [
     padding-bottom: clamp(56px, 7vw, 88px);
   }
 
+  .consultancy-hero-art {
+    position: relative;
+    background-color: #ebe6dc;
+    background-image: var(--consultancy-hero-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--color-heading);
+  }
+
+  .consultancy-hero-art h1 {
+    font-size: 4rem;
+    color: var(--color-heading);
+    margin-bottom: 20px;
+  }
+
+  .consultancy-hero-art .subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text);
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .consultancy-what-we-do {
+    position: relative;
+    background-color: #f5f1e8;
+    background-image:
+      linear-gradient(180deg, rgba(245, 241, 232, 0.92) 0%, rgba(245, 241, 232, 0.88) 100%),
+      var(--consultancy-section-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
   .page-hero {
     padding: 180px 0 100px;
   }
 
-  .bg-offwhite {
-    background-color: #f3efe8;
-    color: var(--color-heading);
-  }
-
   .page-hero h1 {
     font-size: 4rem;
-    color: inherit;
     margin-bottom: 20px;
   }
 
   .page-hero .subtitle {
     font-size: 1.2rem;
-    color: inherit;
-    opacity: 0.8;
     max-width: 700px;
     margin: 0 auto;
   }

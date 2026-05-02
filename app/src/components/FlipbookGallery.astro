@@ -1,20 +1,26 @@
 ---
 export interface Props {
   images: { src: string; alt: string }[];
+  /** Optional full-bleed illustration behind the flipbook (e.g. service gradient PNG). */
+  backgroundImage?: string;
 }
 
-const { images } = Astro.props;
+const { images, backgroundImage } = Astro.props;
 const total = images.length;
+const illustration = Boolean(backgroundImage);
 ---
 
-<div class="flipbook-outer old-money-fill-soft">
-  <div class="flipbook-scene old-money-fill">
+<div
+  class:list={['flipbook-outer', { 'old-money-fill-soft': !illustration, 'flipbook-outer--illustration': illustration }]}
+  style={illustration ? `--flipbook-illustration: url(${backgroundImage})` : undefined}
+>
+  <div class:list={['flipbook-scene', { 'old-money-fill': !illustration, 'flipbook-scene--illustration': illustration }]}>
     <div class="scene-graphic scene-graphic-left" aria-hidden="true"></div>
     <div class="scene-graphic scene-graphic-right" aria-hidden="true"></div>
     <!-- Stack of pages — rendered back-to-front -->
     {images.map((img, i) => (
       <div class="page" data-page={i} data-caption={img.alt}>
-        <div class="page-front old-money-fill">
+        <div class:list={['page-front', { 'old-money-fill': !illustration, 'page-front--illustration': illustration }]}>
           <img src={img.src} alt={img.alt} class="page-img" />
           <div class="page-overlay"></div>
         </div>
@@ -181,6 +187,30 @@ const total = images.length;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     color: var(--color-accent);
+  }
+
+  .flipbook-outer--illustration {
+    background-image:
+      linear-gradient(180deg, rgba(245, 241, 232, 0.88) 0%, rgba(245, 241, 232, 0.78) 100%),
+      var(--flipbook-illustration);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .flipbook-scene--illustration {
+    background: transparent;
+    border-color: rgba(194, 168, 120, 0.35);
+  }
+
+  .flipbook-outer--illustration .scene-graphic {
+    background:
+      linear-gradient(180deg, rgba(194, 168, 120, 0.08), rgba(194, 168, 120, 0.02)),
+      repeating-linear-gradient(45deg, rgba(48, 52, 54, 0.04), rgba(48, 52, 54, 0.04) 2px, transparent 2px, transparent 7px);
+  }
+
+  .page-front--illustration {
+    background: rgba(245, 241, 232, 0.35);
   }
 
   @media (max-width: 768px) {

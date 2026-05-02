@@ -3,13 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { withBase } from '../utils/withBase';
+import aboutPageBg from '../assets/backgrounds/About.png';
 ---
 
 <Layout title="About Us">
   <Header />
 
-  <!-- 1. HERO SECTION -->
-  <section class="page-hero editorial-section">
+  <div class="about-page" style={`--about-page-bg: url(${aboutPageBg.src})`}>
+  <!-- 1. LEAD (no separate hero — full-page background) -->
+  <section class="section editorial-section about-lead">
     <div class="container text-center">
       <h1 class="editorial-title">Rooted in Imphal.<br/>Expanding Across the North East.</h1>
       <p class="subtitle editorial-center-lead">A design practice focused on creating architecture that responds to environment, culture, and long-term performance.</p>
@@ -155,24 +157,48 @@ import { withBase } from '../utils/withBase';
     </div>
   </section>
 
+  </div>
+
   <Footer />
 </Layout>
 
 <style>
-  .page-hero {
-    padding: 180px 0 100px;
-    background: linear-gradient(180deg, #f4eee2 0%, #f5f1e8 100%);
+  .about-page {
+    --about-pad-top: 76px;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-top: var(--about-pad-top);
+    background-color: #f3efe8;
+    background-image:
+      linear-gradient(180deg, rgba(245, 241, 232, 0.82) 0%, rgba(245, 241, 232, 0.78) 55%, rgba(245, 241, 232, 0.85) 100%),
+      var(--about-page-bg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
-  
-  .page-hero h1 {
+
+  @media (max-width: 900px) {
+    .about-page {
+      background-attachment: scroll;
+    }
+  }
+
+  .about-lead {
+    padding-top: clamp(48px, 8vw, 96px);
+    padding-bottom: clamp(32px, 5vw, 56px);
+  }
+
+  .about-lead h1 {
     margin-bottom: 20px;
     text-wrap: balance;
   }
-  
-  .page-hero .subtitle {
+
+  .about-lead .subtitle {
     font-size: 1.2rem;
     color: var(--color-text);
-    opacity: 0.8;
+    opacity: 0.88;
     max-width: 700px;
     margin: 0 auto;
   }
@@ -353,7 +379,7 @@ import { withBase } from '../utils/withBase';
   }
 
   @media (max-width: 768px) {
-    .page-hero h1 { font-size: 2.5rem; }
+    .about-lead h1 { font-size: 2.5rem; }
     .vision-mission { flex-direction: column; }
   }
 </style>

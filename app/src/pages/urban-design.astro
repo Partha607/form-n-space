@@ -7,6 +7,7 @@ import { Image } from 'astro:assets';
 import { withBase } from '../utils/withBase';
 import topImg from '../assets/Urban-design-01-Top.png';
 import bottomImg from '../assets/Urban-design-02.png';
+import urbanOverviewBg from '../assets/backgrounds/Urban_Design_Gradient.png';
 ---
 
 <Layout title="Urban Design">
@@ -24,7 +25,10 @@ import bottomImg from '../assets/Urban-design-02.png';
   </section>
 
   <!-- OVERVIEW & WHAT WE DO -->
-  <section class="section editorial-section">
+  <section
+    class="section editorial-section urban-overview-bg"
+    style={`--urban-overview-bg: url(${urbanOverviewBg.src})`}
+  >
     <div class="container single-col-prose">
       <div class="content-block">
         <h2 class="section-title block-title">Overview</h2>
@@ -114,6 +118,17 @@ import bottomImg from '../assets/Urban-design-02.png';
 </Layout>
 
 <style>
+  .urban-overview-bg {
+    position: relative;
+    background-color: #f5f1e8;
+    background-image:
+      linear-gradient(180deg, rgba(245, 241, 232, 0.9) 0%, rgba(245, 241, 232, 0.86) 100%),
+      var(--urban-overview-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
   .single-col-prose {
     max-width: 40rem;
     margin: 0 auto;

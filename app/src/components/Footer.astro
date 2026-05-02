@@ -1,11 +1,12 @@
 ---
 import logo from '../assets/logo.png';
+import footerBg from '../assets/backgrounds/footer.png';
 
 const FACEBOOK_URL = 'https://www.facebook.com/formnspaces/';
 const INSTAGRAM_URL = 'https://www.instagram.com/formspacemanipur/';
 ---
 
-<footer class="footer">
+<footer class="footer" style={`--footer-bg: url(${footerBg.src})`}>
   <div class="container footer-grid">
     <div class="footer-col footer-brand">
       <div class="footer-logo">
@@ -73,10 +74,20 @@ const INSTAGRAM_URL = 'https://www.instagram.com/formspacemanipur/';
 
 <style>
   .footer {
-    background-color: #7a7f85;
+    position: relative;
+    isolation: isolate;
     color: #e8e6df;
     padding-top: 72px;
     border-top: 1px solid rgba(232, 230, 223, 0.25);
+    background-color: #5c6066;
+    background-image:
+      linear-gradient(180deg, rgba(32, 34, 36, 0.72) 0%, rgba(32, 34, 36, 0.55) 45%, rgba(32, 34, 36, 0.68) 100%),
+      linear-gradient(rgba(60, 62, 66, 0.35), rgba(60, 62, 66, 0.35)),
+      var(--footer-bg);
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+    background-repeat: no-repeat;
+    background-blend-mode: normal, multiply, normal;
   }
 
   .footer-grid {

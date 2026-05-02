@@ -13,6 +13,7 @@ import i5 from '../assets/interior-Page-5-Workspaces-Offices.png';
 import i6 from '../assets/interior-Page-6-Materials-Details.png';
 import i7 from '../assets/interior-Page-7-North-East-Context.png';
 import i8 from '../assets/interior-Page-8-Closing-Page-CTA.png';
+import interiorFlipBg from '../assets/backgrounds/INTERIOR_GRADIENT.png';
 
 const images = [
   { src: i1.src, alt: "Interior Cover" },
@@ -37,7 +38,7 @@ const images = [
       <a href={withBase('contact')} class="btn btn-primary">Plan Your Interior</a>
     </div>
     
-    <FlipbookGallery images={images} />
+    <FlipbookGallery images={images} backgroundImage={interiorFlipBg.src} />
   </section>
 
   <!-- OVERVIEW & WHAT WE DO -->

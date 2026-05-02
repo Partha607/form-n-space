@@ -11,6 +11,10 @@ import hero3 from '../assets/hero/1c.jpg';
 import hero4 from '../assets/hero/3-1.jpg';
 import hero5 from '../assets/hero/1-2.jpg';
 import hero6 from '../assets/hero/haridas-mantripukhri-right.jpg';
+import archIntroBg from '../assets/backgrounds/Front_page.png';
+import archServicesBg from '../assets/backgrounds/CONSULTANCY_GRADIENT.png';
+import archValueBg from '../assets/backgrounds/Urban_Design_Gradient.png';
+import archStatementBg from '../assets/backgrounds/Portfolio.png';
 
 const heroSlides = [
   { src: hero1.src, alt: 'Form & Space Architecture' },
@@ -37,7 +41,10 @@ const heroSlides = [
   />
 
   <!-- 2. INTRO SECTION -->
-  <section class="section intro-section">
+  <section
+    class="section intro-section arch-bg-section"
+    style={`--arch-section-bg: url(${archIntroBg.src})`}
+  >
     <div class="container text-center">
       <div class="content-block">
         <span class="eyebrow">Design Studio</span>
@@ -52,7 +59,10 @@ const heroSlides = [
   </section>
 
   <!-- 3. CORE SERVICES -->
-  <section class="section services-section section-muted">
+  <section
+    class="section services-section arch-bg-section"
+    style={`--arch-section-bg: url(${archServicesBg.src})`}
+  >
     <div class="container">
       <div class="services-grid">
         <div class="service-card premium-card">
@@ -76,7 +86,10 @@ const heroSlides = [
   </section>
 
   <!-- 4. VALUE PROPOSITION -->
-  <section class="section value-section">
+  <section
+    class="section value-section arch-bg-section"
+    style={`--arch-section-bg: url(${archValueBg.src})`}
+  >
     <div class="container">
       <h2 class="section-title">Why Us</h2>
       <div class="value-grid content-block">
@@ -101,7 +114,10 @@ const heroSlides = [
   </section>
 
   <!-- 5 & 6. EXPANSION & TRUST -->
-  <section class="section editorial-section statement-section text-center section-muted">
+  <section
+    class="section editorial-section statement-section text-center arch-bg-section"
+    style={`--arch-section-bg: url(${archStatementBg.src})`}
+  >
     <div class="container">
       <h2 class="statement-title">From Imphal to Guwahati expanding across North East India.</h2>
       <p class="statement-subtitle">We are actively working with clients in Assam, Meghalaya, Nagaland, and surrounding regions, bringing region-specific design expertise to every project.</p>
@@ -126,6 +142,22 @@ const heroSlides = [
 </Layout>
 
 <style>
+  .arch-bg-section {
+    position: relative;
+    background-color: #f5f1e8;
+    background-image:
+      linear-gradient(180deg, rgba(245, 241, 232, 0.92) 0%, rgba(245, 241, 232, 0.88) 100%),
+      var(--arch-section-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .services-section.section-muted,
+  .statement-section.section-muted {
+    background: none;
+  }
+
   .text-center {
     text-align: center;
   }
