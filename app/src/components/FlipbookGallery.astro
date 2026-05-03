@@ -104,8 +104,11 @@ const illustration = Boolean(backgroundImage);
     position: absolute;
     inset: 0;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    /* Avoid sub-pixel 3D sorting gaps between faces */
+    transform: translateZ(0.1px);
   }
 
   .page-front {
@@ -119,7 +122,7 @@ const illustration = Boolean(backgroundImage);
   }
 
   .page-back {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) translateZ(0.1px);
     background: #e5e0d5; /* Subtle back-of-page color */
     border: 1px solid rgba(194, 168, 120, 0.3);
   }
@@ -138,7 +141,8 @@ const illustration = Boolean(backgroundImage);
     object-fit: contain;
     object-position: center;
     display: block;
-    background: transparent;
+    /* Opaque mat so PNG letterboxing / transparent gutters never show the next page */
+    background: var(--color-surface);
   }
 
   .page-overlay {
@@ -210,7 +214,8 @@ const illustration = Boolean(backgroundImage);
   }
 
   .page-front--illustration {
-    background: rgba(245, 241, 232, 0.35);
+    /* Must be opaque — semi-transparent allowed the stacked page to read through */
+    background: var(--color-surface);
   }
 
   @media (max-width: 768px) {
@@ -273,6 +278,10 @@ const illustration = Boolean(backgroundImage);
     }
 
     function setFlipState(index: number, prevIndex: number) {
+      // Invalidate pending transitionend / timeout from a prior flip so we never
+      // applyStacking(oldIndex) after the user has already moved to another page.
+      transitionToken++;
+
       pages.forEach((page, i) => {
         if (i < index) {
           page.classList.add('flipped');
@@ -286,24 +295,31 @@ const illustration = Boolean(backgroundImage);
       if (!prefersReduced && singleStepForward && index > 0) {
         applyStackingDuringForwardFlip(prevIndex, index);
         const turning = pages[prevIndex];
-        const token = ++transitionToken;
+        const token = transitionToken;
         let settled = false;
+        let fallbackId = 0;
 
-        const finish = () => {
-          if (settled || token !== transitionToken) return;
+        function finish() {
+          if (settled) return;
+          if (token !== transitionToken) {
+            clearTimeout(fallbackId);
+            turning.removeEventListener('transitionend', onEnd);
+            settled = true;
+            return;
+          }
           settled = true;
           clearTimeout(fallbackId);
           turning.removeEventListener('transitionend', onEnd);
           applyStacking(index);
-        };
+        }
 
-        const onEnd = (e: TransitionEvent) => {
+        function onEnd(e: TransitionEvent) {
           if (e.propertyName !== 'transform') return;
           finish();
-        };
+        }
 
         turning.addEventListener('transitionend', onEnd);
-        const fallbackId = window.setTimeout(finish, 1800);
+        fallbackId = window.setTimeout(finish, 1800);
       } else {
         applyStacking(index);
       }

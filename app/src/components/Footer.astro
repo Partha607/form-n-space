@@ -1,5 +1,6 @@
 ---
 import logo from '../assets/logo.png';
+import n8eLogo from '../assets/n8e-logo.png';
 import footerBg from '../assets/backgrounds/footer.png';
 
 const FACEBOOK_URL = 'https://www.facebook.com/formnspaces/';
@@ -66,8 +67,20 @@ const INSTAGRAM_URL = 'https://www.instagram.com/formspacemanipur/';
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">
-      <p>&copy; {new Date().getFullYear()} Form & Space Architects. All rights reserved.</p>
+    <div class="footer-bottom-inner">
+      <p class="footer-copyright">&copy; {new Date().getFullYear()} Form & Space Architects. All rights reserved.</p>
+      <p class="footer-credit">
+        <img
+          src={n8eLogo.src}
+          alt=""
+          width={n8eLogo.width}
+          height={n8eLogo.height}
+          class="footer-n8e-logo"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="footer-copyright">Made with love and passion by N8E Labs</span>
+      </p>
     </div>
   </div>
 </footer>
@@ -79,10 +92,10 @@ const INSTAGRAM_URL = 'https://www.instagram.com/formspacemanipur/';
     color: #e8e6df;
     padding-top: 72px;
     border-top: 1px solid rgba(232, 230, 223, 0.25);
-    background-color: #5c6066;
+    background-color:rgb(88, 145, 230);
     background-image:
       linear-gradient(180deg, rgba(32, 34, 36, 0.72) 0%, rgba(32, 34, 36, 0.55) 45%, rgba(32, 34, 36, 0.68) 100%),
-      linear-gradient(rgba(60, 62, 66, 0.35), rgba(60, 62, 66, 0.35)),
+      linear-gradient(rgba(90, 139, 236, 0.35), rgba(61, 109, 206, 0.35)),
       var(--footer-bg);
     background-size: cover, cover, cover;
     background-position: center, center, center;
@@ -192,14 +205,77 @@ const INSTAGRAM_URL = 'https://www.instagram.com/formspacemanipur/';
   .footer-bottom {
     border-top: 1px solid rgba(232, 230, 223, 0.22);
     padding: 18px 0 22px;
-    text-align: center;
   }
 
-  .footer-bottom p {
+  .footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 clamp(18px, 2.6vw, 48px);
+  }
+
+  .footer-copyright {
     margin: 0;
     font-size: 0.82rem;
     color: #e8e6df;
     opacity: 0.75;
+    text-align: left;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .footer-credit {
+    margin: 0;
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.55rem;
+    font-size: 0.78rem;
+    color: #e8e6df;
+    opacity: 0.65;
+    text-align: right;
+    letter-spacing: 0.02em;
+    max-width: 100%;
+  }
+
+  .footer-n8e-logo {
+    /* Tall mark: cap height to one line of credit copy, width follows aspect ratio */
+    height: clamp(17px, 2.1em, 24px);
+    width: auto;
+    max-width: min(64px, 22vw);
+    object-fit: contain;
+    object-position: center;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .footer-credit-text {
+    line-height: 1.35;
+  }
+
+  @media (max-width: 640px) {
+    .footer-bottom-inner {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      min-width: 0;
+    }
+
+    .footer-credit {
+      margin-left: 0;
+      justify-content: center;
+      text-align: center;
+    }
   }
 
   @media (max-width: 1024px) {
